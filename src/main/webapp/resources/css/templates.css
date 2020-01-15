@@ -1,0 +1,13 @@
+.footer {
+    background: #ccc;
+    border: solid 1px black;
+    width: 100%;
+    text-align: center;
+}
+
+.header {
+    background: #bbb;
+    border: solid 1px black;
+    width: 100%;
+    text-align: center;
+}
