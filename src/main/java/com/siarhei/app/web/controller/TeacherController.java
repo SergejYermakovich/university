@@ -1,9 +1,16 @@
 package com.siarhei.app.web.controller;
 
 import com.siarhei.app.core.exceptions.CourseNotFoundException;
+import com.siarhei.app.core.exceptions.TeacherNotFoundException;
+import com.siarhei.app.core.exceptions.UserNotFoundException;
 import com.siarhei.app.core.model.Course;
+import com.siarhei.app.core.model.Teacher;
+import com.siarhei.app.core.model.User;
 import com.siarhei.app.core.service.CourseService;
+import com.siarhei.app.core.service.TeacherService;
+import com.siarhei.app.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +24,17 @@ public class TeacherController {
     @Autowired
     CourseService courseService;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    TeacherService teacherService;
+
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
-    public String courses(Model model) {
-        model.addAttribute("courses", courseService.getAll());
+    public String courses(Model model, Authentication authentication) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Teacher teacher = teacherService.getByUser(user).orElseThrow(TeacherNotFoundException::new);
+        model.addAttribute("courses", courseService.getAllByTeacher(teacher));
         return "teacher_courses";
     }
 

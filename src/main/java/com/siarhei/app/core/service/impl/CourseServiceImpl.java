@@ -2,6 +2,7 @@ package com.siarhei.app.core.service.impl;
 
 import com.siarhei.app.core.model.Course;
 import com.siarhei.app.core.model.StudentGroup;
+import com.siarhei.app.core.model.Teacher;
 import com.siarhei.app.core.repository.CourseRepository;
 import com.siarhei.app.core.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> getAll() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public List<Course> getAllByTeacher(Teacher teacher) {
+        return courseRepository.getAllByTeacher(teacher);
     }
 }

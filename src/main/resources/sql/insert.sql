@@ -8,7 +8,8 @@ INSERT INTO users
 VALUES (1, 'serge', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true , 'siarhei','yermakovich'),
        (2, 'yermakovich', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'marcel','lochka'),
        (3, 'apollo', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'ivan','petrov'),
-       (4, 'creed', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'chala','houglu');
+       (4, 'apollo2', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'ivan','ivanov'),
+       (5, 'creed', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'chala','houglu');
 
 INSERT INTO roles
 VALUES (1, 'ROLE_STUDENT');
@@ -21,13 +22,15 @@ INSERT INTO user_role
 VALUES (1, 1),
        (2, 1),
        (3, 2),
-       (4, 3);
+       (4, 2),
+       (5, 3);
 
 INSERT INTO teachers
-VALUES (1, 3, 'high');
+VALUES (1, 3, 'high'),
+       (2, 4, 'high');
 
 INSERT INTO admins
-VALUES (1, 4, 'absolute');
+VALUES (1, 5, 'absolute');
 
 INSERT INTO students
 VALUES (1, 1, 1,'Brest,Lenina 23','belarus'),
@@ -35,7 +38,8 @@ VALUES (1, 1, 1,'Brest,Lenina 23','belarus'),
 
 INSERT INTO courses
 VALUES (1,1,'Math for AC','course related to AC-47 and 48'),
-       (2,1,'Phys for AC','course related to AC-47 and 48');
+       (2,1,'Phys for AC','course related to AC-47 and 48'),
+       (3,2,'C++ for TB','course related to TB');
 
 INSERT INTO news
 VALUES (1,1,'Math for AC','canceled 12/12/2019' , '2019-12-11 21:29:43'),
@@ -47,4 +51,6 @@ INSERT INTO course_group
 VALUES (1, 1),
        (2, 1),
        (1, 2),
-       (2, 2);
+       (2, 2),
+       (3,3),
+       (3,4);

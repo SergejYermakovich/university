@@ -65,7 +65,6 @@
     </c:forEach>
 </table>
 
-
 <h2>Admins: </h2>
 <table border="2">
     <tr class="table-header">
