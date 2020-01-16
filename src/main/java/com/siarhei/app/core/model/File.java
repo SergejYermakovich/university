@@ -18,26 +18,15 @@ public class File {
     @Column(name = "file_name", length = 100)
     private String fileName;
 
-    @Column(name = "file_extension", length = 5)
-    private String fileExtension;
-
-    @Transient
-    private String fileBaseName;
-
     public File() {
-
     }
 
     public File(
             String fileDirectory,
-            String fileName,
-            String fileExtension,
-            String fileBaseName
+            String fileName
     ) {
         this.fileDirectory = fileDirectory;
         this.fileName = fileName;
-        this.fileExtension = fileExtension;
-        this.fileBaseName = fileBaseName;
     }
 
     public Long getId() {
@@ -62,22 +51,6 @@ public class File {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    public String getFileExtension() {
-        return fileExtension;
-    }
-
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
-    }
-
-    public String getFileBaseName() {
-        return fileBaseName;
-    }
-
-    public void setFileBaseName(String fileBaseName) {
-        this.fileBaseName = fileBaseName;
     }
 
     public Path getFilePath() {

@@ -125,8 +125,7 @@ CREATE TABLE IF NOT EXISTS course_group
 (
     id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     file_directory VARCHAR(255) NOT NULL,
-    file_name VARCHAR(255) NOT NULL,
-    file_extension VARCHAR(255) NOT NULL
+    file_name VARCHAR(255) NOT NULL
 
 )
     ENGINE = InnoDB;

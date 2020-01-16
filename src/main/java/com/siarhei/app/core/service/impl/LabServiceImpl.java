@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class LabServiceImpl implements LabService {
@@ -16,5 +19,15 @@ public class LabServiceImpl implements LabService {
     @Override
     public Lab save(Lab lab) {
         return labRepository.save(lab);
+    }
+
+    @Override
+    public Optional<Integer> findMaxOrder() {
+        return labRepository.findMaxOrder();
+    }
+
+    @Override
+    public List<Lab> findAllByCourseName(String courseName) {
+        return labRepository.findAllByCourseName(courseName);
     }
 }
