@@ -1,6 +1,7 @@
 package com.siarhei.app.core.service.impl;
 
 import com.siarhei.app.core.model.Lab;
+import com.siarhei.app.core.model.Student;
 import com.siarhei.app.core.repository.LabRepository;
 import com.siarhei.app.core.service.LabService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,15 @@ public class LabServiceImpl implements LabService {
     @Override
     public List<Lab> findAllByCourseName(String courseName) {
         return labRepository.findAllByCourseName(courseName);
+    }
+
+    @Override
+    public List<Lab> findAll() {
+        return labRepository.findAll();
+    }
+
+    @Override
+    public List<Lab> findAllByStudent(Student student) {
+        return labRepository.findAllByStudent(student);
     }
 }

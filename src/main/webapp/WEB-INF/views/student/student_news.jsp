@@ -7,7 +7,6 @@
 <body>
 <h1>News :</h1>
 <table>
-    <tbody>
     <c:forEach var="event" items="${news}">
         <tr>
             <td>${event.name}</td>
@@ -15,7 +14,6 @@
             <td>${event.date}</td>
         </tr>
     </c:forEach>
-    </tbody>
 </table>
 </body>
 </html>

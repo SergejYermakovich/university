@@ -56,7 +56,10 @@ public class StudentController {
 
     @RequestMapping(value = "/labs", method = RequestMethod.GET)
     public String labs(Model model, Authentication authentication) {
-model.addAttribute("labs");
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Student student = studentService.findByUser(user);
+        List<Lab> labs = labService.findAllByStudent(student);
+        model.addAttribute("labs" ,labs);
         return "student_labs";
     }
 }

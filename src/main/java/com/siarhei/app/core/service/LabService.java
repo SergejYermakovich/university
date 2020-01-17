@@ -1,6 +1,7 @@
 package com.siarhei.app.core.service;
 
 import com.siarhei.app.core.model.Lab;
+import com.siarhei.app.core.model.Student;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,4 +12,8 @@ public interface LabService {
     Optional<Integer> findMaxOrder(Long courseId);
 
     List<Lab> findAllByCourseName(String courseName);
+
+    List<Lab> findAll();
+
+    List<Lab> findAllByStudent(Student student);
 }

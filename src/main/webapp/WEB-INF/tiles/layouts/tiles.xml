@@ -9,6 +9,13 @@
         <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
     </definition>
 
+    <!--                    exceptions                     -->
+    <definition name="page_not_found" extends="default">
+        <put-attribute name="title" value="page_not_found"/>
+        <put-attribute name="body" value="/WEB-INF/views/exceptions/page_not_found.jsp"/>
+    </definition>
+    <!--                exceptions  end                       -->
+
     <definition name="login" extends="default">
         <put-attribute name="title" value="Login"/>
         <put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
@@ -83,5 +90,10 @@
     <definition name="student_labs" extends="default">
         <put-attribute name="title" value="student_labs"/>
         <put-attribute name="body" value="/WEB-INF/views/student/student_labs.jsp"/>
+    </definition>
+
+    <definition name="compiler" extends="default">
+        <put-attribute name="title" value="compiler"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/compiler.jsp"/>
     </definition>
 </tiles-definitions>

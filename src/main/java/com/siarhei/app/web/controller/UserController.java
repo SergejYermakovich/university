@@ -143,4 +143,10 @@ public class UserController {
             return "registration";
         }
     }
+
+    @RequestMapping(value = "/compiler", method = RequestMethod.GET)
+    public String compiler(Model model) {
+
+        return "compiler";
+    }
 }
