@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,8 +12,7 @@
         }
     </style>
 
-    <script src="/resourses/js/jquery.min.js"></script>
-    <script src="js/ace.js"></script>
+
     <script>
 
         var code;
@@ -43,8 +43,8 @@
     function run() {
         alert('run');
         alert(code.getValue());
-        var cmd = "g++ -Wall main.cpp -o main_prog && echo 'Compilation: SUCCESS."
-            + " Program output is:\n' && ./main_prog && echo \"\nExit code: $?\"";
+          var cmd = "g++ -Wall main.cpp -o main_prog && echo 'Compilation: SUCCESS."
+             + " Program output is:\n' && ./main_prog && echo \"\nExit code: $?\"";
 
         var output = $("#output");
         output.text('');
@@ -70,5 +70,8 @@
         });
     }
 </script>
+<script src="<c:url value="/resources/js/ace.js"/>"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>
