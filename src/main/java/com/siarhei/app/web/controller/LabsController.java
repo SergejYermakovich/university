@@ -95,7 +95,7 @@ public class LabsController {
     private Lab createLab(Lab lab, Course course, MultipartFile multipartFile) throws IOException {
         lab.setStatus(LabStatus.IN_PROGRESS);
         lab.setCourse(course);
-        lab.setOrder(getOrderForCourseLab());
+        lab.setOrder(getOrderForCourseLab(course.getId()));
         File doc = new File("manuals", "doc" + lab.getOrder());
         fileService.createManualFile(doc, course.getId(), multipartFile);
         fileService.save(doc);
@@ -103,8 +103,8 @@ public class LabsController {
         return lab;
     }
 
-    private int getOrderForCourseLab() {
-        return labService.findMaxOrder().orElse(0) + 1;
+    private int getOrderForCourseLab(Long courseId) {
+        return labService.findMaxOrder(courseId).orElse(0) + 1;
     }
 
 }

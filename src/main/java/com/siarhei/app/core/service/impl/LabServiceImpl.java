@@ -22,8 +22,8 @@ public class LabServiceImpl implements LabService {
     }
 
     @Override
-    public Optional<Integer> findMaxOrder() {
-        return labRepository.findMaxOrder();
+    public Optional<Integer> findMaxOrder(Long courseId) {
+        return labRepository.findMaxOrder(courseId);
     }
 
     @Override

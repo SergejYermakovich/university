@@ -49,6 +49,10 @@ public class MessageController {
 
     @RequestMapping(value = "/dialog/{id}", method = RequestMethod.POST)
     public String addMessage(@PathVariable long id, @ModelAttribute("newMessage") Message message, Authentication authentication) {
+        if (message.getText().length() == 0) {
+            System.out.println("empty message!!!!!!!!!");
+            return "redirect:/message/dialog/" + id;
+        }
         Message newMessage = new Message();
         newMessage.setText(message.getText());
         User to = userService.findById(id).orElseThrow(UserNotFoundException::new);

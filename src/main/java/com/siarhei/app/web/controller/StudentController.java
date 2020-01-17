@@ -2,10 +2,7 @@ package com.siarhei.app.web.controller;
 
 import com.siarhei.app.core.exceptions.UserNotFoundException;
 import com.siarhei.app.core.model.*;
-import com.siarhei.app.core.service.CourseService;
-import com.siarhei.app.core.service.NewsService;
-import com.siarhei.app.core.service.StudentService;
-import com.siarhei.app.core.service.UserService;
+import com.siarhei.app.core.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -33,6 +30,9 @@ public class StudentController {
     @Autowired
     private NewsService newsService;
 
+    @Autowired
+    private LabService labService;
+
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news(Model model, Authentication authentication) {
         String login = authentication.getName();
@@ -42,7 +42,6 @@ public class StudentController {
         Student student = studentService.findByUser(user);
         System.out.println("student group: " + student.getStudentGroup());
         StudentGroup studentGroup = student.getStudentGroup();
-
         List<Course> courses = courseService.getAllByStudentGroups(studentGroup);
         System.out.println("courses: " + courses.size());
         List<News> newsList = new ArrayList<>();
@@ -53,5 +52,11 @@ public class StudentController {
         Collections.sort(newsList);
         model.addAttribute("news", newsList);
         return "student_news";
+    }
+
+    @RequestMapping(value = "/labs", method = RequestMethod.GET)
+    public String labs(Model model, Authentication authentication) {
+model.addAttribute("labs");
+        return "student_labs";
     }
 }

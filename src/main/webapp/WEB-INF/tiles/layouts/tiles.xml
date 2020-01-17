@@ -79,4 +79,9 @@
         <put-attribute name="title" value="newLab"/>
         <put-attribute name="body" value="/WEB-INF/views/labs/newLab.jsp"/>
     </definition>
+
+    <definition name="student_labs" extends="default">
+        <put-attribute name="title" value="student_labs"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_labs.jsp"/>
+    </definition>
 </tiles-definitions>

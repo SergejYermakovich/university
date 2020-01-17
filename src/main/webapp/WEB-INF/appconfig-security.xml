@@ -10,8 +10,6 @@
     <http>
         <intercept-url pattern="/"
                        access="hasAnyRole(T(com.siarhei.app.core.model.RoleName).ROLE_STUDENT, T(com.siarhei.app.core.model.RoleName).ROLE_ADMIN, T(com.siarhei.app.core.model.RoleName).ROLE_TEACHER)"/>
-
-
         <form-login login-page="/login" default-target-url="/welcome" always-use-default-target="true" authentication-failure-url="/login?error"
                     username-parameter="username" password-parameter="password"/>
     </http>

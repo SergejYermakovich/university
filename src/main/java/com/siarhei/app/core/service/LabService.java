@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface LabService {
     Lab save(Lab lab);
 
-    Optional<Integer> findMaxOrder();
+    Optional<Integer> findMaxOrder(Long courseId);
 
     List<Lab> findAllByCourseName(String courseName);
 }

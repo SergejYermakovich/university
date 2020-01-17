@@ -9,7 +9,7 @@
 <div class="header">
     A dream becomes a goal when action is taken to its achievement!!!
     <p>Today <%= new java.util.Date() %></p>
-    <form:form action="logout" method="post">
+    <form:form action="/logout" method="post">
         <input type="submit" value="log out">
     </form:form>
 </div>

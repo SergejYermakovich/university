@@ -8,6 +8,7 @@
 <ul>
     <li><a href="${pageContext.request.contextPath}/message/createMessageDialog">Message menu</a></li>
     <li><a href="${pageContext.request.contextPath}/student/news">News</a></li>
+    <li><a href="${pageContext.request.contextPath}/student/labs">Labs</a></li>
 </ul>
 </body>
 </html>
