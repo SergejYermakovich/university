@@ -14,7 +14,6 @@
             overflow: hidden;
         }
     </style>
-
 </head>
 <body>
 <div id="code">
@@ -22,9 +21,9 @@
 <button id="run" onclick='run();'>Run</button>
 <p>Output:</p>
 <pre id="output">Waiting...</pre>
+
 <script>
     var code;
-    alert('in code func');
     code = ace.edit("code");                      // создаем редактор из элемента с id="code"
     code.setTheme("ace/theme/textmate");          // выбираем тему оформления для подсветки синтаксиса
     code.getSession().setMode("ace/mode/c_cpp");  // говорим что код надо подсвечивать как C++ код
@@ -36,17 +35,16 @@
     code.$blockScrolling = Infinity;              // отключаем устаревшие, не поддерживаемые фишки редактора
 
     function run() {
-        alert('run');
-        var cmd = "g++ -Wall main.cpp -o main_prog && echo 'Compilation: SUCCESS."
-            + " Program output is:\n' && ./main_prog && echo \"\nExit code: $?\"";
+        // var cmd = "g++ -Wall main.cpp -o main_prog && echo 'Compilation: SUCCESS."
+        //     + " Program output is:\n' && ./main_prog && echo \"\nExit code: $?\"";
 
+        var cmd = "g++ -Wall main.cpp -o main_prog && echo  && ./main_prog";
         var output = $("#output");
         output.text('');
         var to_compile = {
             "src": code.getValue(),
             "cmd": cmd,
         };
-
         output.text("Executing... Please wait.");
 
         $.ajax({
@@ -56,15 +54,11 @@
             contentType: "text/plain; charset=utf-8",
             dataType: "text"
         }).done(function (data) {
-            alert('success');
             output.text(data);
         }).fail(function (data) {
-            alert('error');
             output.text("Server error: " + data);
         });
     }
 </script>
-
-
 </body>
 </html>

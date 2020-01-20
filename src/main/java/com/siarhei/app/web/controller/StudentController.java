@@ -1,12 +1,15 @@
 package com.siarhei.app.web.controller;
 
+import com.siarhei.app.core.exceptions.CourseNotFoundException;
 import com.siarhei.app.core.exceptions.UserNotFoundException;
 import com.siarhei.app.core.model.*;
 import com.siarhei.app.core.service.*;
+import com.siarhei.app.web.properties.ApplicationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,6 +20,9 @@ import java.util.List;
 @Controller
 @RequestMapping("student/")
 public class StudentController {
+
+    @Autowired
+    private ApplicationProperties applicationProperties;
 
     @Autowired
     private UserService userService;
@@ -34,19 +40,14 @@ public class StudentController {
     private LabService labService;
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
-    public String news(Model model, Authentication authentication) {
+    public String allNews(Model model, Authentication authentication) {
         String login = authentication.getName();
-        System.out.println("login: " + login);
         User user = userService.findByLogin(login).orElseThrow(UserNotFoundException::new);
-        System.out.println("username: " + user.getName());
         Student student = studentService.findByUser(user);
-        System.out.println("student group: " + student.getStudentGroup());
         StudentGroup studentGroup = student.getStudentGroup();
         List<Course> courses = courseService.getAllByStudentGroups(studentGroup);
-        System.out.println("courses: " + courses.size());
         List<News> newsList = new ArrayList<>();
         for (Course course : courses) {
-            System.out.println(course.getDescription());
             newsList.addAll(newsService.getAllByCourse(course));
         }
         Collections.sort(newsList);
@@ -55,11 +56,47 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/labs", method = RequestMethod.GET)
-    public String labs(Model model, Authentication authentication) {
+    public String allLabs(Model model, Authentication authentication) {
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         Student student = studentService.findByUser(user);
         List<Lab> labs = labService.findAllByStudent(student);
-        model.addAttribute("labs" ,labs);
+        model.addAttribute("labs", labs);
         return "student_labs";
     }
+
+    @RequestMapping(value = "/courses", method = RequestMethod.GET)
+    public String courses(Model model, Authentication authentication) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Student student = studentService.findByUser(user);
+        StudentGroup studentGroup = student.getStudentGroup();
+        List<Course> courses = courseService.getAllByStudentGroups(studentGroup);
+        model.addAttribute("courses", courses);
+        return "student_courses";
+    }
+
+    @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
+    public String courseMenu(Model model, Authentication authentication, @PathVariable Long id) {
+        model.addAttribute("courseId", id);
+        return "student_course_menu";
+    }
+
+    @RequestMapping(value = "/courses/{id}/news", method = RequestMethod.GET)
+    public String studentCourseNews(Model model, Authentication authentication, @PathVariable Long id) {
+        Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);
+        List<News> newsList = newsService.getAllByCourse(course);
+        model.addAttribute("newsList", newsList);
+        return "student_course_news";
+    }
+
+    @RequestMapping(value = "/courses/{id}/labs", method = RequestMethod.GET)
+    public String studentCourseLabs(Model model, Authentication authentication, @PathVariable Long id) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);
+        Student student = studentService.findByUser(user);
+        List<Lab> labs = labService.findAllByStudentAndCourse(student, course);
+        model.addAttribute("labs", labs);
+        model.addAttribute("path", "file://///" + applicationProperties.getPath() +"\\"+ id);
+        return "student_course_labs";
+    }
+
 }

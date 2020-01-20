@@ -1,5 +1,6 @@
 package com.siarhei.app.core.service.impl;
 
+import com.siarhei.app.core.model.Course;
 import com.siarhei.app.core.model.Lab;
 import com.siarhei.app.core.model.Student;
 import com.siarhei.app.core.repository.LabRepository;
@@ -40,5 +41,10 @@ public class LabServiceImpl implements LabService {
     @Override
     public List<Lab> findAllByStudent(Student student) {
         return labRepository.findAllByStudent(student);
+    }
+
+    @Override
+    public List<Lab> findAllByStudentAndCourse(Student student, Course course) {
+        return labRepository.findAllByStudentAndCourse(student, course);
     }
 }
