@@ -75,13 +75,13 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
-    public String courseMenu(Model model, Authentication authentication, @PathVariable Long id) {
+    public String courseMenu(Model model, @PathVariable Long id) {
         model.addAttribute("courseId", id);
         return "student_course_menu";
     }
 
     @RequestMapping(value = "/courses/{id}/news", method = RequestMethod.GET)
-    public String studentCourseNews(Model model, Authentication authentication, @PathVariable Long id) {
+    public String studentCourseNews(Model model, @PathVariable Long id) {
         Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);
         List<News> newsList = newsService.getAllByCourse(course);
         model.addAttribute("newsList", newsList);
@@ -95,6 +95,8 @@ public class StudentController {
         Student student = studentService.findByUser(user);
         List<Lab> labs = labService.findAllByStudentAndCourse(student, course);
         model.addAttribute("labs", labs);
+        //лабы по категориям разбить (ин прогресс , он ревью , дан)
+        //разобраться с открытием документа
         model.addAttribute("path", "file://///" + applicationProperties.getPath() +"\\"+ id);
         return "student_course_labs";
     }
