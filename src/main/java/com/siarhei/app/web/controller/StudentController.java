@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("student/")
@@ -104,7 +103,7 @@ public class StudentController {
         model.addAttribute("labsInProgress", labsInProgress);
         model.addAttribute("labsInReview", labsInReview);
         model.addAttribute("labsDone", labsDone);
-        //лабы по категориям разбить (ин прогресс , он ревью , дан)
+
         //разобраться с открытием документа
         model.addAttribute("path", applicationProperties.getPath() + "\\" + id);//"file://///" +
         return "student_course_labs";

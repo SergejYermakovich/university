@@ -16,7 +16,7 @@
             <td>${lab.description}</td>
             <td>${lab.status}</td>
             <td><a href="${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc"> report </a></td>
-            <td></td>
+            <td>send to review</td>
         </tr>
         <iframe src="https://docs.google.com/gview?url=${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc&embedded=true">document</iframe>
     </c:forEach>

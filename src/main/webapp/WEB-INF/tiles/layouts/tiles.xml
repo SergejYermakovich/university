@@ -116,4 +116,9 @@
         <put-attribute name="title" value="student_course_labs"/>
         <put-attribute name="body" value="/WEB-INF/views/student/student_course_labs.jsp"/>
     </definition>
+
+    <definition name="teacher_student_group" extends="default">
+        <put-attribute name="title" value="teacher_student_group"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_student_group.jsp"/>
+    </definition>
 </tiles-definitions>

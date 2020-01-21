@@ -1,5 +1,6 @@
 package com.siarhei.app.core.service;
 
+import com.siarhei.app.core.model.Course;
 import com.siarhei.app.core.model.StudentGroup;
 
 import java.util.List;
@@ -11,4 +12,7 @@ public interface StudentGroupService {
 
     List<StudentGroup> getAll();
 
+    List<StudentGroup> findAllByCourses(Course course);
+
+    Optional<StudentGroup> findById(long id);
 }

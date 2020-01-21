@@ -1,5 +1,6 @@
 package com.siarhei.app.core.service.impl;
 
+import com.siarhei.app.core.model.Course;
 import com.siarhei.app.core.model.StudentGroup;
 import com.siarhei.app.core.repository.StudentGroupRepository;
 import com.siarhei.app.core.service.StudentGroupService;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class StudentGroupServiceImpl implements StudentGroupService {
 
     @Autowired
-    StudentGroupRepository studentGroupRepository;
+    private StudentGroupRepository studentGroupRepository;
 
     @Override
     public Optional<StudentGroup> findByName(String name) {
@@ -25,5 +26,15 @@ public class StudentGroupServiceImpl implements StudentGroupService {
     @Override
     public List<StudentGroup> getAll() {
         return studentGroupRepository.findAll();
+    }
+
+    @Override
+    public List<StudentGroup> findAllByCourses(Course course) {
+        return studentGroupRepository.findAllByCourses(course);
+    }
+
+    @Override
+    public Optional<StudentGroup> findById(long id) {
+        return studentGroupRepository.findById(id);
     }
 }
