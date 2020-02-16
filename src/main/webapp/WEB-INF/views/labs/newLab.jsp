@@ -33,7 +33,7 @@
     </table>
 </form:form>
 
-<h1>Lab list:</h1>
+<h1>Issued lab list:</h1>
 <table>
     <thead>
     <tr>
@@ -47,6 +47,9 @@
             <td>${lab.id}</td>
             <td>${lab.description}</td>
             <td>${lab.course.name}</td>
+            <td>${lab.student.user.name}</td>
+            <td>${lab.student.user.surname}</td>
+            <td>${lab.student.studentGroup.name}</td>
         </tr>
     </c:forEach>
 </table>

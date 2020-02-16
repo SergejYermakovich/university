@@ -9,7 +9,15 @@ VALUES (1, 'serge', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcX
        (2, 'yermakovich', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'marcel','lochka'),
        (3, 'apollo', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'ivan','petrov'),
        (4, 'apollo2', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'ivan','ivanov'),
-       (5, 'creed', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'chala','houglu');
+       (5, 'creed', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'chala','houglu'),
+
+       (6, 'stud1', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'oxana','livanova'),
+       (7, 'stud2', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'petr','petrov'),
+       (8, 'stud3', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'ivan','reivanov'),
+       (9, 'stud4', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'sergei','guts');
+
+
+
 
 INSERT INTO roles
 VALUES (1, 'ROLE_STUDENT');
@@ -23,7 +31,11 @@ VALUES (1, 1),
        (2, 1),
        (3, 2),
        (4, 2),
-       (5, 3);
+       (5, 3),
+       (6, 1),
+       (7, 1),
+       (8, 1),
+       (9, 1);
 
 INSERT INTO teachers
 VALUES (1, 3, 'high'),
@@ -34,7 +46,11 @@ VALUES (1, 5, 'absolute');
 
 INSERT INTO students
 VALUES (1, 1, 1,'Brest,Lenina 23','belarus'),
-       (2, 2, 2,'Brest,Res 13','belarus');
+       (2, 2, 1,'Brest,Res 13','belarus'),
+       (3, 6, 2,'Grodno,Reino 32','belarus'),
+       (4, 7, 2,'Gomel,Tes 87','belarus'),
+       (5, 8, 3,'Minsk,Komsom 44','belarus'),
+       (6, 9, 4,'Saratov,Guty 32e','russia');
 
 INSERT INTO courses
 VALUES (1,1,'Math for AC','course related to AC-47 and 48'),
