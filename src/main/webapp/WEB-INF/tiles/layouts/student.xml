@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="default" template="/WEB-INF/tiles/layouts/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/templates/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
+    </definition>
+
+    <definition name="welcome_student" extends="default">
+        <put-attribute name="title" value="welcome student"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/welcome_student.jsp"/>
+    </definition>
+
+    <definition name="createStudentForUser" extends="default">
+        <put-attribute name="title" value="create Student For User"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/createStudentForUser.jsp"/>
+    </definition>
+
+    <definition name="student_news" extends="default">
+        <put-attribute name="title" value="student_news"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_news.jsp"/>
+    </definition>
+
+    <definition name="student_labs" extends="default">
+        <put-attribute name="title" value="student_labs"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_labs.jsp"/>
+    </definition>
+
+    <definition name="student_courses" extends="default">
+        <put-attribute name="title" value="student_courses"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_courses.jsp"/>
+    </definition>
+
+    <definition name="student_course_menu" extends="default">
+        <put-attribute name="title" value="student_course_menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_course_menu.jsp"/>
+    </definition>
+
+    <definition name="student_course_news" extends="default">
+        <put-attribute name="title" value="student_course_news"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_course_news.jsp"/>
+    </definition>
+
+    <definition name="student_course_labs" extends="default">
+        <put-attribute name="title" value="student_course_labs"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/student_course_labs.jsp"/>
+    </definition>
+
+
+</tiles-definitions>

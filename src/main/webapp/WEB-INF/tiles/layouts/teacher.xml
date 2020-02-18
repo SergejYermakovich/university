@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="default" template="/WEB-INF/tiles/layouts/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/templates/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
+    </definition>
+
+    <definition name="welcome_teacher" extends="default">
+        <put-attribute name="title" value="welcome teacher"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/welcome_teacher.jsp"/>
+    </definition>
+
+    <definition name="teacher_courses" extends="default">
+        <put-attribute name="title" value="teacher_courses"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_courses.jsp"/>
+    </definition>
+
+    <definition name="teacher_course_menu" extends="default">
+        <put-attribute name="title" value="teacher_course_menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_course_menu.jsp"/>
+    </definition>
+
+    <definition name="teacher_student_group" extends="default">
+        <put-attribute name="title" value="teacher_student_group"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_student_group.jsp"/>
+    </definition>
+
+</tiles-definitions>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="default" template="/WEB-INF/tiles/layouts/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/templates/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
+    </definition>
+
+    <definition name="page_not_found" extends="default">
+        <put-attribute name="title" value="page_not_found"/>
+        <put-attribute name="body" value="/WEB-INF/views/exceptions/page_not_found.jsp"/>
+    </definition>
+
+</tiles-definitions>

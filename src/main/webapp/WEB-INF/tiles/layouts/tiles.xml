@@ -9,42 +9,14 @@
         <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
     </definition>
 
-    <!--                    exceptions                     -->
-    <definition name="page_not_found" extends="default">
-        <put-attribute name="title" value="page_not_found"/>
-        <put-attribute name="body" value="/WEB-INF/views/exceptions/page_not_found.jsp"/>
-    </definition>
-    <!--                exceptions  end                       -->
-
     <definition name="login" extends="default">
         <put-attribute name="title" value="Login"/>
         <put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
     </definition>
 
-    <definition name="welcome_admin" extends="default">
-        <put-attribute name="title" value="welcome admin"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/welcome_admin.jsp"/>
-    </definition>
-
-    <definition name="welcome_student" extends="default">
-        <put-attribute name="title" value="welcome student"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/welcome_student.jsp"/>
-    </definition>
-
-    <definition name="welcome_teacher" extends="default">
-        <put-attribute name="title" value="welcome teacher"/>
-        <put-attribute name="body" value="/WEB-INF/views/teacher/welcome_teacher.jsp"/>
-    </definition>
-
-
     <definition name="registration" extends="default">
         <put-attribute name="title" value="Registration"/>
         <put-attribute name="body" value="/WEB-INF/views/common/registration.jsp"/>
-    </definition>
-
-    <definition name="createStudentForUser" extends="default">
-        <put-attribute name="title" value="create Student For User"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/createStudentForUser.jsp"/>
     </definition>
 
     <definition name="createMessageDialog" extends="default">
@@ -57,29 +29,9 @@
         <put-attribute name="body" value="/WEB-INF/views/common/showMessageDialog.jsp"/>
     </definition>
 
-    <definition name="teacher_courses" extends="default">
-        <put-attribute name="title" value="teacher_courses"/>
-        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_courses.jsp"/>
-    </definition>
-
-    <definition name="student_news" extends="default">
-        <put-attribute name="title" value="student_news"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_news.jsp"/>
-    </definition>
-
-    <definition name="teacher_course_menu" extends="default">
-        <put-attribute name="title" value="teacher_course_menu"/>
-        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_course_menu.jsp"/>
-    </definition>
-
     <definition name="piece_of_news" extends="default">
         <put-attribute name="title" value="piece_of_news"/>
         <put-attribute name="body" value="/WEB-INF/views/news/piece_of_news.jsp"/>
-    </definition>
-
-    <definition name="admin_panel" extends="default">
-        <put-attribute name="title" value="admin_panel"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/admin_panel.jsp"/>
     </definition>
 
     <definition name="newLab" extends="default">
@@ -87,38 +39,9 @@
         <put-attribute name="body" value="/WEB-INF/views/labs/newLab.jsp"/>
     </definition>
 
-    <definition name="student_labs" extends="default">
-        <put-attribute name="title" value="student_labs"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_labs.jsp"/>
-    </definition>
-
     <definition name="compiler" extends="default">
         <put-attribute name="title" value="compiler"/>
         <put-attribute name="body" value="/WEB-INF/views/common/compiler.jsp"/>
     </definition>
 
-    <definition name="student_courses" extends="default">
-        <put-attribute name="title" value="student_courses"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_courses.jsp"/>
-    </definition>
-
-    <definition name="student_course_menu" extends="default">
-        <put-attribute name="title" value="student_course_menu"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_course_menu.jsp"/>
-    </definition>
-
-    <definition name="student_course_news" extends="default">
-        <put-attribute name="title" value="student_course_news"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_course_news.jsp"/>
-    </definition>
-
-    <definition name="student_course_labs" extends="default">
-        <put-attribute name="title" value="student_course_labs"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_course_labs.jsp"/>
-    </definition>
-
-    <definition name="teacher_student_group" extends="default">
-        <put-attribute name="title" value="teacher_student_group"/>
-        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_student_group.jsp"/>
-    </definition>
 </tiles-definitions>

@@ -20,6 +20,10 @@
         <property name="definitions">
             <list>
                 <value>/WEB-INF/tiles/layouts/tiles.xml</value>
+                <value>/WEB-INF/tiles/layouts/admin.xml</value>
+                <value>/WEB-INF/tiles/layouts/exceptions.xml</value>
+                <value>/WEB-INF/tiles/layouts/student.xml</value>
+                <value>/WEB-INF/tiles/layouts/teacher.xml</value>
             </list>
         </property>
     </bean>
