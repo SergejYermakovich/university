@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,10 +16,16 @@
         <tr>
             <td>${lab.description}</td>
             <td>${lab.status}</td>
-            <td><a href="${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc"> report </a></td>
+           <!-- <td><a href="{path}/{lab.report.fileDirectory}/{lab.report.fileName}.doc"> report </a></td> -->
+            <td>
+            <form:form method="GET" action="report/${lab.report.fileName}">
+                    <button type="submit">report</button>
+            </form:form>
+            </td>
+            <td>report</td>
             <td>send to review</td>
         </tr>
-        <iframe src="https://docs.google.com/gview?url=${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc&embedded=true">document</iframe>
+       <!-- <iframe src="https://docs.google.com/gview?url={path}/{lab.report.fileDirectory}/{lab.report.fileName}.doc&embedded=true">document</iframe> и знак доллара перед угл скобкой -->
     </c:forEach>
     </tbody>
 </table>

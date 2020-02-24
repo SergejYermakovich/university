@@ -108,4 +108,10 @@ public class StudentController {
         model.addAttribute("path", applicationProperties.getPath() + "\\" + id);//"file://///" +
         return "student_course_labs";
     }
+
+    @RequestMapping(value = "/courses/{id}/report/{filename}", method = RequestMethod.GET)
+    public String openStudentReport(Model model, Authentication authentication, @PathVariable Long id, @PathVariable String filename) {
+        return "edit_student_report";
+    }
 }
+

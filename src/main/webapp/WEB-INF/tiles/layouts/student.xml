@@ -48,5 +48,8 @@
         <put-attribute name="body" value="/WEB-INF/views/student/student_course_labs.jsp"/>
     </definition>
 
-
+    <definition name="edit_student_report" extends="default">
+        <put-attribute name="title" value="edit_student_report"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/edit_student_report.jsp"/>
+    </definition>
 </tiles-definitions>
