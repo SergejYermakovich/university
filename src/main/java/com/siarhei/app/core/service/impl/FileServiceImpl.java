@@ -5,11 +5,15 @@ import com.siarhei.app.core.model.File;
 import com.siarhei.app.core.repository.FileRepository;
 import com.siarhei.app.core.service.FileService;
 import com.siarhei.app.web.properties.ApplicationProperties;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -35,7 +39,14 @@ public class FileServiceImpl implements FileService {
         createCourseDir(courseId);
         createReportDir(courseId);
         java.io.File report = getPathToReportFile(courseId, file.getFileName() + "." + DOC_CONTENT_TYPE).toFile();
-        report.createNewFile();
+//        report.createNewFile();
+        XWPFDocument document = new XWPFDocument();
+//        XWPFParagraph tmpParagraph = document.createParagraph();
+//        XWPFRun tmpRun = tmpParagraph.createRun();
+//        tmpRun.setText("Report");
+//        tmpRun.setFontSize(18);
+        document.write(new FileOutputStream(report));
+        document.close();
     }
 
     @Override

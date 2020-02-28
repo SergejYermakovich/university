@@ -1,0 +1,1 @@
+const textareaValue = document.querySelector("#textarea");
