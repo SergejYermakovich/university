@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>edit_student_report</title>
     <style>
         label,
@@ -24,17 +25,20 @@
 </head>
 <body>
 <div>
+    <button id="back">Back to lab list</button>
     <button id="text_size">Text size</button>
     <button id="text_style">Text style</button>
     <button id="export_pdf">Export in pdf</button>
 </div>
 <label for="textarea"></label>
-<textarea id="textarea" rows="30" cols="265" value="${document}">${document}</textarea>
+<textarea id="textarea" rows="30" cols="265" value="">${document}</textarea>
 <!-- must be a form for saving -->
 <div>
     <button id="save_report">Save</button>
 </div>
-
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 </body>
+
 <script src="${pageContext.request.contextPath}/resources/js/edit_student_report.js"></script>
 </html>

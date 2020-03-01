@@ -9,17 +9,23 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -118,22 +124,27 @@ public class StudentController {
 
     @RequestMapping(value = "/courses/{id}/report/{filename}", method = RequestMethod.GET)
     public String openStudentReport(Model model, Authentication authentication, @PathVariable Long id, @PathVariable String filename) throws IOException, InvalidFormatException {
-        FileInputStream fis = new FileInputStream(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc");
-        //парсим файл
-        XWPFDocument xdoc = new XWPFDocument(OPCPackage.open(fis));
-        XWPFWordExtractor extractor = new XWPFWordExtractor(xdoc);
+        FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc");
+        XWPFDocument document = new XWPFDocument(OPCPackage.open(fileInputStream));
+        XWPFWordExtractor extractor = new XWPFWordExtractor(document);
         extractor.close();//?
-        xdoc.close();//?
-        System.out.println(extractor.getText());
+        document.close();//?
         model.addAttribute("document",extractor.getText());
-        model.addAttribute("");
         return "edit_student_report";
     }
 
     @RequestMapping(value = "/courses/{id}/report/{filename}", method = RequestMethod.POST)
-    public String openStudentRepor1t(Model model, Authentication authentication, @PathVariable Long id, @PathVariable String filename) {
-
-        return "edit_student_report";
+    public String saveStudentReport(@ModelAttribute("text") String text, @PathVariable String filename, @PathVariable String id) throws IOException {
+       // FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc");
+        File report = Path.of(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc").toFile();
+        XWPFDocument document = new XWPFDocument();
+        XWPFParagraph tmpParagraph = document.createParagraph();
+        XWPFRun tmpRun = tmpParagraph.createRun();
+        tmpRun.setText(text);
+       // tmpRun.setFontSize(18);
+        document.write(new FileOutputStream(report));
+        document.close();
+        return "redirect:/student/courses/{id}/report/{filename}";
     }
 }
 

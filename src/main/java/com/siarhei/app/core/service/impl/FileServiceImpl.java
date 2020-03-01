@@ -39,7 +39,6 @@ public class FileServiceImpl implements FileService {
         createCourseDir(courseId);
         createReportDir(courseId);
         java.io.File report = getPathToReportFile(courseId, file.getFileName() + "." + DOC_CONTENT_TYPE).toFile();
-//        report.createNewFile();
         XWPFDocument document = new XWPFDocument();
 //        XWPFParagraph tmpParagraph = document.createParagraph();
 //        XWPFRun tmpRun = tmpParagraph.createRun();
