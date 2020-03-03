@@ -32,7 +32,6 @@
 </div>
 <label for="textarea"></label>
 <textarea id="textarea" rows="30" cols="265" value="">${document}</textarea>
-<!-- must be a form for saving -->
 <div>
     <button id="save_report">Save</button>
 </div>

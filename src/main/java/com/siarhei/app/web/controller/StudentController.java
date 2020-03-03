@@ -1,6 +1,7 @@
 package com.siarhei.app.web.controller;
 
 import com.siarhei.app.core.exceptions.CourseNotFoundException;
+import com.siarhei.app.core.exceptions.LabNotFoundException;
 import com.siarhei.app.core.exceptions.UserNotFoundException;
 import com.siarhei.app.core.model.*;
 import com.siarhei.app.core.service.*;
@@ -124,27 +125,67 @@ public class StudentController {
 
     @RequestMapping(value = "/courses/{id}/report/{filename}", method = RequestMethod.GET)
     public String openStudentReport(Model model, Authentication authentication, @PathVariable Long id, @PathVariable String filename) throws IOException, InvalidFormatException {
-        FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc");
+        FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + id + "\\" + "reports" + "\\" + filename + ".doc");
         XWPFDocument document = new XWPFDocument(OPCPackage.open(fileInputStream));
         XWPFWordExtractor extractor = new XWPFWordExtractor(document);
         extractor.close();//?
         document.close();//?
-        model.addAttribute("document",extractor.getText());
+        model.addAttribute("document", extractor.getText());
         return "edit_student_report";
     }
 
     @RequestMapping(value = "/courses/{id}/report/{filename}", method = RequestMethod.POST)
     public String saveStudentReport(@ModelAttribute("text") String text, @PathVariable String filename, @PathVariable String id) throws IOException {
-       // FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc");
-        File report = Path.of(applicationProperties.getPath() + "\\" + id+ "\\" +"reports" + "\\" + filename + ".doc").toFile();
+        File report = Path.of(applicationProperties.getPath() + "\\" + id + "\\" + "reports" + "\\" + filename + ".doc").toFile();
         XWPFDocument document = new XWPFDocument();
         XWPFParagraph tmpParagraph = document.createParagraph();
         XWPFRun tmpRun = tmpParagraph.createRun();
         tmpRun.setText(text);
-       // tmpRun.setFontSize(18);
         document.write(new FileOutputStream(report));
         document.close();
         return "redirect:/student/courses/{id}/report/{filename}";
+    }
+
+
+    @RequestMapping(value = "/courses/{id}/sendReportToReview/{filename}", method = RequestMethod.GET)
+    public String sendReportToReview(@PathVariable String filename, @PathVariable int id, Authentication authentication) {
+        int orderNumber = getOrderByFilename(filename);
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Student student = studentService.findByUser(user);
+        Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);
+        List<Lab> labs = labService.findAllByStudent(student);
+        Lab lab = labs.stream()
+                .filter(lb -> lb.getCourse().getId().equals(course.getId()))
+                .filter(lb -> lb.getOrder() == orderNumber).findFirst().orElseThrow(LabNotFoundException::new);
+        lab.setStatus(LabStatus.IN_REVIEW);
+        labService.save(lab);
+        return "redirect:/student/courses/{id}/labs";
+    }
+
+    @RequestMapping(value = "/courses/{id}/backReportToInProgress/{filename}", method = RequestMethod.GET)
+    public String backReportToInProgress(@PathVariable String filename, @PathVariable int id, Authentication authentication) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Student student = studentService.findByUser(user);
+        Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);
+        List<Lab> labs = labService.findAllByStudent(student);
+        Lab lab = labs.stream()
+                .filter(lb -> lb.getCourse().getId().equals(course.getId()))
+                .filter(lb -> lb.getOrder() == getOrderByFilename(filename)).findFirst().orElseThrow(LabNotFoundException::new);
+        lab.setStatus(LabStatus.IN_PROGRESS);
+        labService.save(lab);
+        return "redirect:/student/courses/{id}/labs";
+    }
+
+    private int getOrderByFilename(String filename) {
+        String order = "";
+        for (int i = filename.length() - 1; i >= 0; i--) {
+            if (filename.charAt(i) <= 57 && filename.charAt(i) >= 49) {
+                order = filename.charAt(i) + order;
+            } else {
+                break;
+            }
+        }
+        return Integer.parseInt(order);
     }
 }
 

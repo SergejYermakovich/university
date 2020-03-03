@@ -58,7 +58,7 @@ public class TeacherController {
         StudentGroup studentGroup = studentGroupService.findById(studentGroupId).orElseThrow(StudentGroupNotFoundException::new);
         List<Lab> labList = labService.findAll().stream()
                 .filter(lab -> lab.getCourse().getId().equals(courseId))
-                .filter(lab -> lab.getCourse().getStudentGroups().contains(studentGroup))
+                .filter(lab -> lab.getStudent().getStudentGroup().getName().equals(studentGroup.getName()))
                 .collect(Collectors.toList());
 
         List<Lab> labsInReview = labList.stream().filter(lab -> lab.getStatus() == LabStatus.IN_REVIEW).collect(Collectors.toList());

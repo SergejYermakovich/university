@@ -19,4 +19,6 @@ public interface LabService {
     List<Lab> findAllByStudent(Student student);
 
     List<Lab> findAllByStudentAndCourse(Student student, Course course);
+
+    Optional<Lab> findByReportId(Long id);
 }

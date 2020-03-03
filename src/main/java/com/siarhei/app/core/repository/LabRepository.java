@@ -19,4 +19,6 @@ public interface LabRepository extends JpaRepository<Lab, Long> {
     List<Lab> findAllByStudent(Student student);
 
     List<Lab> findAllByStudentAndCourse(Student student, Course course);
+
+    Optional<Lab> findByReportId(Long id);
 }

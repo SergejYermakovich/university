@@ -16,17 +16,18 @@
         <tr>
             <td>${lab.description}</td>
             <td>${lab.status}</td>
-           <!-- <td><a href="{path}/{lab.report.fileDirectory}/{lab.report.fileName}.doc"> report </a></td> -->
             <td>
             <form:form method="GET" action="report/${lab.report.fileName}">
                     <button type="submit">report</button>
             </form:form>
             </td>
-            <td>report</td>
-            <td>send to review</td>
+            <td>
+                <form:form method="GET" action="sendReportToReview/${lab.report.fileName}">
+                    <button type="submit">send to review</button>
+                </form:form>
+            </td>
         </tr>
-       <!-- <iframe src="https://docs.google.com/gview?url={path}/{lab.report.fileDirectory}/{lab.report.fileName}.doc&embedded=true">document</iframe> и знак доллара перед угл скобкой -->
-    </c:forEach>
+     </c:forEach>
     </tbody>
 </table>
 <h2>IN_REVIEW</h2>
@@ -36,10 +37,12 @@
         <tr>
             <td>${lab.description}</td>
             <td>${lab.status}</td>
-            <td><a href="${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc"> report </a></td>
-            <td></td>
+            <td>
+                <form:form method="GET" action="backReportToInProgress/${lab.report.fileName}">
+                    <button type="submit">back to IN_PROGRESS</button>
+                </form:form>
+            </td>
         </tr>
-        <iframe src="https://docs.google.com/gview?url=${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc&embedded=true">document</iframe>
     </c:forEach>
     </tbody>
 </table>
@@ -53,7 +56,6 @@
             <td><a href="${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc"> report </a></td>
             <td></td>
         </tr>
-        <iframe src="https://docs.google.com/gview?url=${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc&embedded=true">document</iframe>
     </c:forEach>
     </tbody>
 </table>

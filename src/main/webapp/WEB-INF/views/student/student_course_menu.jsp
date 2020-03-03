@@ -5,8 +5,8 @@
 </head>
 <body>
 <ul>
-    <li><a href="${pageContext.request.contextPath}/student/courses/${courseId}/news">news of this course</a></li>
-    <li><a href="${pageContext.request.contextPath}/student/courses/${courseId}/labs">your labs of this course</a></li>
+    <li><a href="${pageContext.request.contextPath}/student/courses/${courseId}/news">News of this course</a></li>
+    <li><a href="${pageContext.request.contextPath}/student/courses/${courseId}/labs">Your labs of this course</a></li>
 </ul>
 </body>
 </html>
