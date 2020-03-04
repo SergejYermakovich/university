@@ -128,8 +128,8 @@ public class StudentController {
         FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + id + "\\" + "reports" + "\\" + filename + ".doc");
         XWPFDocument document = new XWPFDocument(OPCPackage.open(fileInputStream));
         XWPFWordExtractor extractor = new XWPFWordExtractor(document);
-        extractor.close();//?
-        document.close();//?
+        extractor.close();
+        document.close();
         model.addAttribute("document", extractor.getText());
         return "edit_student_report";
     }

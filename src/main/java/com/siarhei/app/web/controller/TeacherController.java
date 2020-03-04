@@ -1,11 +1,13 @@
 package com.siarhei.app.web.controller;
 
-import com.siarhei.app.core.exceptions.CourseNotFoundException;
-import com.siarhei.app.core.exceptions.StudentGroupNotFoundException;
-import com.siarhei.app.core.exceptions.TeacherNotFoundException;
-import com.siarhei.app.core.exceptions.UserNotFoundException;
+import com.siarhei.app.core.exceptions.*;
 import com.siarhei.app.core.model.*;
 import com.siarhei.app.core.service.*;
+import com.siarhei.app.web.properties.ApplicationProperties;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +26,8 @@ import java.util.stream.Collectors;
 @RequestMapping("teacher/")
 public class TeacherController {
 
+    @Autowired
+    private ApplicationProperties applicationProperties;
     @Autowired
     private CourseService courseService;
 
@@ -35,6 +42,9 @@ public class TeacherController {
 
     @Autowired
     private LabService labService;
+
+    @Autowired
+    private FileService fileService;
 
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public String courses(Model model, Authentication authentication) {
@@ -70,6 +80,26 @@ public class TeacherController {
         model.addAttribute("labsDone", labsDone);
 
         return "teacher_student_group";
+    }
+
+    @RequestMapping(value = "/courses/{courseId}/studentGroup/{studentGroupId}/approveReport/{fileName}", method = RequestMethod.GET)
+    public String approveReport(@PathVariable Long courseId, @PathVariable Long studentGroupId, @PathVariable String fileName) {
+        File report =fileService.findByFileName(fileName).orElseThrow(LabNotFoundException::new);
+        Lab labForApproving = labService.findByReport(report).orElseThrow(LabNotFoundException::new);
+        labForApproving.setStatus(LabStatus.DONE);
+        labService.save(labForApproving);
+        return "redirect:/teacher/courses/{courseId}/studentGroup/{studentGroupId}";
+    }
+
+    @RequestMapping(value = "/courses/{courseId}/studentGroup/{studentGroupId}/openReport/{fileName}", method = RequestMethod.GET)
+    public String openReportByTeacher(Model model, @PathVariable Long courseId, @PathVariable Long studentGroupId, @PathVariable String fileName) throws IOException, InvalidFormatException {
+        FileInputStream fileInputStream = new FileInputStream(applicationProperties.getPath() + "\\" + courseId + "\\" + "reports" + "\\" + fileName + ".doc");
+        XWPFDocument doc = new XWPFDocument(OPCPackage.open(fileInputStream));
+        XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
+        extractor.close();
+        doc.close();
+        model.addAttribute("document", extractor.getText());
+        return "open_report_by_teacher";
     }
 
 }

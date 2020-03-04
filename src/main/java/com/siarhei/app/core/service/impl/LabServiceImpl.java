@@ -1,6 +1,7 @@
 package com.siarhei.app.core.service.impl;
 
 import com.siarhei.app.core.model.Course;
+import com.siarhei.app.core.model.File;
 import com.siarhei.app.core.model.Lab;
 import com.siarhei.app.core.model.Student;
 import com.siarhei.app.core.repository.LabRepository;
@@ -51,5 +52,10 @@ public class LabServiceImpl implements LabService {
     @Override
     public Optional<Lab> findByReportId(Long id) {
         return labRepository.findByReportId(id);
+    }
+
+    @Override
+    public Optional<Lab> findByReport(File report) {
+        return labRepository.findByReport(report);
     }
 }

@@ -1,6 +1,7 @@
 package com.siarhei.app.core.service;
 
 import com.siarhei.app.core.model.Course;
+import com.siarhei.app.core.model.File;
 import com.siarhei.app.core.model.Lab;
 import com.siarhei.app.core.model.Student;
 
@@ -21,4 +22,7 @@ public interface LabService {
     List<Lab> findAllByStudentAndCourse(Student student, Course course);
 
     Optional<Lab> findByReportId(Long id);
+
+    Optional<Lab> findByReport(File report);
+
 }

@@ -15,6 +15,8 @@
             <td>${lab.description}</td>
             <td>${lab.status}</td>
             <td>${lab.student.studentGroup.name}</td>
+            <td>${lab.student.user.name}</td>
+            <td>${lab.student.user.surname}</td>
         </tr>
     </c:forEach>
     </tbody>
@@ -27,6 +29,18 @@
             <td>${lab.description}</td>
             <td>${lab.status}</td>
             <td>${lab.student.studentGroup.name}</td>
+            <td>${lab.student.user.name}</td>
+            <td>${lab.student.user.surname}</td>
+            <td>
+                <form:form method="GET" action="/teacher/courses/${lab.course.id}/studentGroup/${lab.student.studentGroup.id}/openReport/${lab.report.fileName}">
+                    <button type="submit">Open report</button>
+                </form:form>
+            </td>
+            <td>
+                <form:form method="GET" action="/teacher/courses/${lab.course.id}/studentGroup/${lab.student.studentGroup.id}/approveReport/${lab.report.fileName}">
+                    <button type="submit">Approve</button>
+                </form:form>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
@@ -39,6 +53,8 @@
             <td>${lab.description}</td>
             <td>${lab.status}</td>
             <td>${lab.student.studentGroup.name}</td>
+            <td>${lab.student.user.name}</td>
+            <td>${lab.student.user.surname}</td>
         </tr>
     </c:forEach>
     </tbody>

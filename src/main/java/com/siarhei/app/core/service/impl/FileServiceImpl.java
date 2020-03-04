@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -57,6 +58,11 @@ public class FileServiceImpl implements FileService {
         createManualDir(courseId);
         java.io.File manual = getPathToManualFile(courseId, file.getFileName() + "." + DOC_CONTENT_TYPE).toFile();
         multipartFile.transferTo(manual);
+    }
+
+    @Override
+    public Optional<File> findByFileName(String filename) {
+        return fileRepository.findByFileName(filename);
     }
 
     private Path getPathToReportsDirectory(long courseId) {
