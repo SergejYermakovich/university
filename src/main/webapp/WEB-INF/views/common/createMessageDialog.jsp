@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -6,7 +7,14 @@
     <title>createMessageDialog</title>
 </head>
 <body>
-
+<div>
+    <form:form method="post">
+        <input type="text" name="search"/>
+        <input type="submit" value="search"/>
+    </form:form>
+</div>
+<c:choose>
+    <c:when test="${userList.size() ge 1}">
 <div class="responsive-table">
     <table>
         <thead>
@@ -25,5 +33,10 @@
         </tbody>
     </table>
 </div>
+</c:when>
+<c:otherwise>
+    <h1>No users for this condition</h1>
+</c:otherwise>
+</c:choose>
 </body>
 </html>
