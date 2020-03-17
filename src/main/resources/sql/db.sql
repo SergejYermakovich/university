@@ -160,3 +160,15 @@ CREATE TABLE IF NOT EXISTS lab_comments
     CONSTRAINT comment_teacher_id_fk FOREIGN KEY (teacher_id) REFERENCES teachers (id)
 )
     ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS notifications
+(
+    id          INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    notification_message VARCHAR(100) NOT NULL,
+    user_id     INT          NOT NULL,
+    date        DATETIME     NOT NULL,
+    viewed      BOOLEAN        NOT NULL,
+
+    CONSTRAINT notifications_user_id_fk FOREIGN KEY (user_id) REFERENCES users  (id)
+)
+    ENGINE = InnoDB;
