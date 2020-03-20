@@ -38,6 +38,9 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @Autowired
+    private NotificationService notificationService;
+
+    @Autowired
     private StudentGroupService studentGroupService;
 
     @Autowired
@@ -83,11 +86,14 @@ public class TeacherController {
     }
 
     @RequestMapping(value = "/courses/{courseId}/studentGroup/{studentGroupId}/approveReport/{fileName}", method = RequestMethod.GET)
-    public String approveReport(@PathVariable Long courseId, @PathVariable Long studentGroupId, @PathVariable String fileName) {
-        File report =fileService.findByFileName(fileName).orElseThrow(LabNotFoundException::new);
+    public String approveReport(@PathVariable Long courseId, @PathVariable Long studentGroupId, @PathVariable String fileName, Authentication authentication) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        File report = fileService.findByFileName(fileName).orElseThrow(LabNotFoundException::new);
         Lab labForApproving = labService.findByReport(report).orElseThrow(LabNotFoundException::new);
         labForApproving.setStatus(LabStatus.DONE);
         labService.save(labForApproving);
+
+        createNotificationForUserAboutLabStatus(labForApproving, user);
         return "redirect:/teacher/courses/{courseId}/studentGroup/{studentGroupId}";
     }
 
@@ -100,6 +106,12 @@ public class TeacherController {
         doc.close();
         model.addAttribute("document", extractor.getText());
         return "open_report_by_teacher";
+    }
+
+    private void createNotificationForUserAboutLabStatus(Lab lab, User user) {
+        String message = "Your Lab №" + lab.getOrder() + " of " + lab.getCourse().getName() + " course got " + lab.getStatus() + "status by teacher " + user.getName() + " " + user.getSurname();
+        Notification notification = notificationService.createNotification(message, lab.getStudent().getUser());
+        notificationService.save(notification);
     }
 
 }

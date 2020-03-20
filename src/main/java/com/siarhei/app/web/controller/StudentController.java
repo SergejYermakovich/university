@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,6 +47,9 @@ public class StudentController {
     private StudentService studentService;
 
     @Autowired
+    private TeacherService teacherService;
+
+    @Autowired
     private CourseService courseService;
 
     @Autowired
@@ -53,6 +57,9 @@ public class StudentController {
 
     @Autowired
     private LabService labService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String allNews(Model model, Authentication authentication) {
@@ -159,6 +166,8 @@ public class StudentController {
                 .filter(lb -> lb.getOrder() == orderNumber).findFirst().orElseThrow(LabNotFoundException::new);
         lab.setStatus(LabStatus.IN_REVIEW);
         labService.save(lab);
+
+        createNotificationForTeacherAboutLabStatus(lab, user, course);
         return "redirect:/student/courses/{id}/labs";
     }
 
@@ -173,6 +182,8 @@ public class StudentController {
                 .filter(lb -> lb.getOrder() == getOrderByFilename(filename)).findFirst().orElseThrow(LabNotFoundException::new);
         lab.setStatus(LabStatus.IN_PROGRESS);
         labService.save(lab);
+
+        createNotificationForTeacherAboutLabStatus(lab, user, course);
         return "redirect:/student/courses/{id}/labs";
     }
 
@@ -186,6 +197,12 @@ public class StudentController {
             }
         }
         return Integer.parseInt(order);
+    }
+
+    private void createNotificationForTeacherAboutLabStatus(Lab lab, User fromWhom, Course course){
+        String message = "Lab №" + lab.getOrder() + " of " + lab.getCourse().getName() + " course of " + fromWhom.getName() + " " + fromWhom.getSurname() + " is " + lab.getStatus() + " now.";
+        Notification notification = notificationService.createNotification(message, course.getTeacher().getUser());
+        notificationService.save(notification);
     }
 }
 
