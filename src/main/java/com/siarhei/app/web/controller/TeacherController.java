@@ -3,6 +3,7 @@ package com.siarhei.app.web.controller;
 import com.siarhei.app.core.exceptions.*;
 import com.siarhei.app.core.model.*;
 import com.siarhei.app.core.service.*;
+import com.siarhei.app.web.dto.StudentInDto;
 import com.siarhei.app.web.properties.ApplicationProperties;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +31,7 @@ public class TeacherController {
 
     @Autowired
     private ApplicationProperties applicationProperties;
+
     @Autowired
     private CourseService courseService;
 
@@ -45,6 +49,9 @@ public class TeacherController {
 
     @Autowired
     private LabService labService;
+
+    @Autowired
+    private LabCommentService labCommentService;
 
     @Autowired
     private FileService fileService;
@@ -105,11 +112,31 @@ public class TeacherController {
         extractor.close();
         doc.close();
         model.addAttribute("document", extractor.getText());
+        model.addAttribute("labComment", new LabComment());
         return "open_report_by_teacher";
     }
 
+    @RequestMapping(value = "/courses/{courseId}/studentGroup/{studentGroupId}/openReport/{fileName}", method = RequestMethod.POST)
+    public String addCommentAndSendToInProgress(Authentication authentication, @PathVariable Long studentGroupId, @PathVariable Long courseId, @ModelAttribute("labComment") LabComment labComment, @PathVariable String fileName) {
+        File report = fileService.findByFileName(fileName).orElseThrow(LabNotFoundException::new);
+        Course course = courseService.getById(courseId).orElseThrow(CourseNotFoundException::new);
+        Lab lab = labService.findByReport(report).orElseThrow(LabNotFoundException::new);
+
+        lab.setStatus(LabStatus.IN_PROGRESS);
+        labService.save(lab);
+
+        labComment.setDate(new Date());
+        labComment.setLab(lab);
+        labComment.setTeacher(course.getTeacher());
+        labCommentService.save(labComment);
+
+        User teacherUser = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        createNotificationForUserAboutLabStatus(lab, teacherUser);
+        return "redirect:/teacher/courses/" + courseId + "/studentGroup/" + studentGroupId;
+    }
+
     private void createNotificationForUserAboutLabStatus(Lab lab, User user) {
-        String message = "Your Lab №" + lab.getOrder() + " of " + lab.getCourse().getName() + " course got " + lab.getStatus() + "status by teacher " + user.getName() + " " + user.getSurname();
+        String message = "Your Lab №" + lab.getOrder() + " of " + lab.getCourse().getName() + " course got " + lab.getStatus() + " status by teacher " + user.getName() + " " + user.getSurname();
         Notification notification = notificationService.createNotification(message, lab.getStudent().getUser());
         notificationService.save(notification);
     }
