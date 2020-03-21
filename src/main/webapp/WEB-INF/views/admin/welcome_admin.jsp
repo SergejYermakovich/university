@@ -10,6 +10,7 @@
     <li><a href="${pageContext.request.contextPath}/admin/panel">Admin panel</a></li>
     <li><a href="${pageContext.request.contextPath}/admin/search">User searching</a></li>
     <li><a href="${pageContext.request.contextPath}/admin/createTeacher">createTeacher</a></li>
+    <li><a href="${pageContext.request.contextPath}/instruments">Instruments</a></li>
 </ul>
 </body>
 </html>

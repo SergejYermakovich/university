@@ -24,6 +24,9 @@ public class Message implements Comparable<Message> {
     @Column(name = "date")
     private Date date;
 
+    @Column(name = "viewed")
+    private boolean viewed;
+
     public Long getId() {
         return id;
     }
@@ -62,6 +65,14 @@ public class Message implements Comparable<Message> {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public boolean isViewed() {
+        return viewed;
+    }
+
+    public void setViewed(boolean viewed) {
+        this.viewed = viewed;
     }
 
     @Override

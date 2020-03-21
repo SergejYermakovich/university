@@ -39,9 +39,14 @@
         <put-attribute name="body" value="/WEB-INF/views/labs/newLab.jsp"/>
     </definition>
 
-    <definition name="compiler" extends="default">
-        <put-attribute name="title" value="compiler"/>
-        <put-attribute name="body" value="/WEB-INF/views/common/compiler.jsp"/>
+    <definition name="instruments" extends="default">
+        <put-attribute name="title" value="instruments"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/instruments.jsp"/>
+    </definition>
+
+    <definition name="compilerC" extends="default">
+        <put-attribute name="title" value="compilerC"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/compilerC.jsp"/>
     </definition>
 
 </tiles-definitions>

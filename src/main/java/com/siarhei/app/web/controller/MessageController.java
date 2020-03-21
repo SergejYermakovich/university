@@ -24,7 +24,7 @@ import java.util.List;
 public class MessageController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     MessageService messageService;

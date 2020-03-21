@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS messages
     to_id INT NOT NULL,
     text VARCHAR(255) NOT NULL,
     date        DATETIME     NOT NULL,
+    viewed TINYINT(1) NOT  NULL ,
 
     FOREIGN KEY (from_id) REFERENCES users (id),
     FOREIGN KEY (to_id) REFERENCES users (id)

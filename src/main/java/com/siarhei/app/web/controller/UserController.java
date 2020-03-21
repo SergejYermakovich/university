@@ -144,9 +144,13 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/compiler", method = RequestMethod.GET)
-    public String compiler(Model model) {
+    @RequestMapping(value = "/instruments", method = RequestMethod.GET)
+    public String getInstruments() {
+        return "instruments";
+    }
 
-        return "compiler";
+    @RequestMapping(value = "/compilerC", method = RequestMethod.GET)
+    public String compilerC() {
+        return "compilerC";
     }
 }

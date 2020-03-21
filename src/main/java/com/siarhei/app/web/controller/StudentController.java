@@ -27,10 +27,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -60,6 +57,12 @@ public class StudentController {
 
     @Autowired
     private NotificationService notificationService;
+
+    @Autowired
+    private FileService fileService;
+
+    @Autowired
+    private LabCommentService labCommentService;
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String allNews(Model model, Authentication authentication) {
@@ -125,8 +128,6 @@ public class StudentController {
         model.addAttribute("labsInReview", labsInReview);
         model.addAttribute("labsDone", labsDone);
 
-        //разобраться с открытием документа
-        model.addAttribute("path", applicationProperties.getPath() + "\\" + id);//"file://///" +
         return "student_course_labs";
     }
 
@@ -138,6 +139,17 @@ public class StudentController {
         extractor.close();
         document.close();
         model.addAttribute("document", extractor.getText());
+
+        com.siarhei.app.core.model.File file = fileService.findByFileName(filename).orElseThrow(FileNotFoundException::new);
+        Lab lab = labService.findByReport(file).orElseThrow(LabNotFoundException::new);
+
+        List<LabComment> labComments = labCommentService.getAllByLab(lab);
+        if (!labComments.isEmpty()) {
+            labComments.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+            model.addAttribute("lastComment",labComments.get(0));
+            model.addAttribute("labComments",labComments);
+        }
+
         return "edit_student_report";
     }
 

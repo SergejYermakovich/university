@@ -53,8 +53,6 @@
         <tr>
             <td>${lab.description}</td>
             <td>${lab.status}</td>
-            <td><a href="${path}/${lab.report.fileDirectory}/${lab.report.fileName}.doc"> report </a></td>
-            <td></td>
         </tr>
     </c:forEach>
     </tbody>

@@ -10,7 +10,7 @@
     <li><a href="${pageContext.request.contextPath}/student/news">News</a></li>
     <!-- <li><a href="${pageContext.request.contextPath}/student/labs">All labs</a></li> -->
     <li><a href="${pageContext.request.contextPath}/student/courses">All courses</a></li>
-    <li><a href="${pageContext.request.contextPath}/compiler">Compiler</a></li>
+    <li><a href="${pageContext.request.contextPath}/instruments">Instruments</a></li>
 </ul>
 </body>
 </html>
