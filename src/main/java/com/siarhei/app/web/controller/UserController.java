@@ -153,4 +153,14 @@ public class UserController {
     public String compilerC() {
         return "compilerC";
     }
+
+    @RequestMapping(value = "/calculator", method = RequestMethod.GET)
+    public String calculate() {
+        return "calculator";
+    }
+
+    @RequestMapping(value = "/translate", method = RequestMethod.GET)
+    public String translate() {
+        return "translator";
+    }
 }

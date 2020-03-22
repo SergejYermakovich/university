@@ -49,4 +49,14 @@
         <put-attribute name="body" value="/WEB-INF/views/common/compilerC.jsp"/>
     </definition>
 
+    <definition name="calculator" extends="default">
+        <put-attribute name="title" value="calculator"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/calculator.jsp"/>
+    </definition>
+
+    <definition name="translator" extends="default">
+        <put-attribute name="title" value="translator"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/translator.jsp"/>
+    </definition>
+
 </tiles-definitions>
