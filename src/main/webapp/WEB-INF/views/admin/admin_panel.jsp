@@ -5,6 +5,11 @@
     <title>admin panel</title>
 </head>
 <body>
+
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
+
 <h1>Admin panel: </h1>
 
 <h2>Students: </h2>

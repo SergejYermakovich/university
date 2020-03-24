@@ -6,6 +6,9 @@
     <title>Create Student For User</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <div class="common_container">
     <h2>Enter some new info: </h2>
     <form:form method="post" modelAttribute="studentInDto" action="createStudentForUser">

@@ -94,7 +94,6 @@ public class AdminController {
     public String getInfoAboutUser(Model model, @PathVariable Long id) {
         User user = userService.findById(id).orElseThrow(UserNotFoundException::new);
         model.addAttribute("user",user);
-        //Student student = s
         return "userInfoForAdmin";
     }
 

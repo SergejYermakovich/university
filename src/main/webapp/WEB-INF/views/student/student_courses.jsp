@@ -5,6 +5,9 @@
     <title>Student courses</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <table>
     <tbody>
     <c:forEach var="course" items="${courses}">

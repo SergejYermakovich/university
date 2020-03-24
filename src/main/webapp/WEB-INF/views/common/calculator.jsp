@@ -151,6 +151,9 @@
     </style>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <div id="calculator">
     <!-- Screen and clear key -->
     <div class="top">

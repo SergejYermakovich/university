@@ -4,6 +4,9 @@
     <title>Instruments</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>Instruments:</h1>
 <ul>
     <li><a href="${pageContext.request.contextPath}/compilerC">C/C++ compiler</a></li>

@@ -3,9 +3,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>teacher student group</title>
+    <title>Teacher student group</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>teacher student group:</h1>
 <h2>IN_PROGRESS</h2>
 <table>

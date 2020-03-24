@@ -7,6 +7,9 @@
     <title>createMessageDialog</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <div>
     <form:form method="post">
         <input type="text" name="search"/>

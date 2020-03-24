@@ -8,6 +8,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>Student course labs:</h1>
 <h2>IN_PROGRESS</h2>
 <table>

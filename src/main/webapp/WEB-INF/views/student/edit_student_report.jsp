@@ -26,7 +26,9 @@
 </head>
 <body>
 <div>
-    <button id="back">Back to lab list</button>
+    <form>
+        <input type="button" value="Go back!" onclick="history.back()">
+    </form>
     <button id="text_size">Text size</button>
     <button id="text_style">Text style</button>
     <button id="export_pdf">Export in pdf</button>

@@ -6,6 +6,9 @@
     <title>Add news</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <form:form commandName="news">
     <table>
         <tr>

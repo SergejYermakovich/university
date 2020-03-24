@@ -5,6 +5,9 @@
     <title>student course news</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>Student course news:</h1>
 <table>
     <tbody>

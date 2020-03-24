@@ -16,6 +16,9 @@
     </style>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <div id="code">
 </div>
 <button id="run" onclick='run();'>Run</button>

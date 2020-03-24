@@ -5,6 +5,9 @@
     <title>Course menu</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>Teacher course menu : </h1>
 <ul>
     <li><a href="${pageContext.request.contextPath}/news/add/${course.id}">News adding</a></li>

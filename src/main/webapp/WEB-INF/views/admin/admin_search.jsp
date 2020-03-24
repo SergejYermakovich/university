@@ -7,6 +7,11 @@
     <title>admin_search</title>
 </head>
 <body>
+
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
+
 <h2>Введите имя,фамилию или логин пользователя:</h2>
 <form:form method="post">
     <input type="text" name="search"/>

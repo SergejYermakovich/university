@@ -7,6 +7,9 @@
     <title>Registration</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <div class="common_container">
     <form:form method="post" modelAttribute="user" action="registration">
         <label for="login">Login: </label>

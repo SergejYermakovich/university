@@ -6,6 +6,9 @@
     <title>open_report_by_teacher</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <label for="textarea"></label>
 <textarea id="textarea" rows="30" cols="265" value="" disabled="true">
     ${document}

@@ -5,6 +5,9 @@
     <title>student_labs</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>Student labs:</h1>
 <table>
     <c:forEach var="lab" items="${labs}">

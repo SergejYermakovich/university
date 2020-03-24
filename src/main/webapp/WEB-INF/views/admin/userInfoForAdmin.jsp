@@ -4,6 +4,9 @@
     <title>User Info For Admin</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>User Info: </h1>
 <h2>${user.id}</h2>
 <h2>${user.name}</h2>

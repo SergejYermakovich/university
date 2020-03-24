@@ -8,7 +8,9 @@
     <title>show Message Dialog</title>
 </head>
 <body>
-
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <table>
     <tbody>
     <c:forEach var="message" items="${messageList}">

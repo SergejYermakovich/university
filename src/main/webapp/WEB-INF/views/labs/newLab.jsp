@@ -7,6 +7,9 @@
     <title>new Lab</title>
 </head>
 <body>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 <h1>New lab adding:</h1>
 <form:form commandName="lab" enctype="multipart/form-data" action="/labs/add/${course.id}?_csrf=${_csrf.token}">
     <table>
