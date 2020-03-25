@@ -11,11 +11,11 @@ public class Student {
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)//cascade = CascadeType.MERGE,
     @JoinColumn(name="user_id")
-    User user;
+    private User user;
 
     @OneToOne
     @JoinColumn(name="student_group_id")
-    StudentGroup studentGroup;
+    private StudentGroup studentGroup;
 
     @Column(name = "address")
     private String address;

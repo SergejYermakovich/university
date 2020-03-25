@@ -29,6 +29,11 @@
                     <button type="submit">send to review</button>
                 </form:form>
             </td>
+            <td>
+                <form:form method="GET" action="openManual/${lab.doc.fileName}">
+                    <button type="submit">Open manual</button>
+                </form:form>
+            </td>
         </tr>
      </c:forEach>
     </tbody>

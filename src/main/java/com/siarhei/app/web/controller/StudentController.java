@@ -1,6 +1,7 @@
 package com.siarhei.app.web.controller;
 
 import com.siarhei.app.core.exceptions.CourseNotFoundException;
+import com.siarhei.app.core.exceptions.DocumentNotFoundException;
 import com.siarhei.app.core.exceptions.LabNotFoundException;
 import com.siarhei.app.core.exceptions.UserNotFoundException;
 import com.siarhei.app.core.model.*;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -198,6 +201,18 @@ public class StudentController {
         createNotificationForTeacherAboutLabStatus(lab, user, course);
         return "redirect:/student/courses/{id}/labs";
     }
+
+    @RequestMapping(value = "/courses/{id}/openManual/{filename}", method = RequestMethod.GET)
+    public String openManual(@PathVariable String filename, @PathVariable int id) {
+        File file = Path.of(applicationProperties.getPath() + "\\" + id + "\\" + "manuals" + "\\" + filename + ".doc").toFile();
+        try {
+            Desktop.getDesktop().open(file);
+        } catch (IOException e) {
+           throw new DocumentNotFoundException();
+        }
+        return "redirect:/student/courses/{id}/labs";
+    }
+
 
     private int getOrderByFilename(String filename) {
         String order = "";
