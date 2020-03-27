@@ -32,4 +32,10 @@
         <put-attribute name="title" value="open_report_by_teacher"/>
         <put-attribute name="body" value="/WEB-INF/views/teacher/open_report_by_teacher.jsp"/>
     </definition>
+
+    <definition name="teacher_student_group_statistics" extends="default">
+        <put-attribute name="title" value="teacher_student_group_statistics"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/teacher_student_group_statistics.jsp"/>
+    </definition>
+
 </tiles-definitions>

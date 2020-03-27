@@ -21,6 +21,7 @@
             <td>${studentGroup.id}</td>
             <td>${studentGroup.name}</td>
             <td><a href="${pageContext.request.contextPath}/teacher/courses/${course.id}/studentGroup/${studentGroup.id}">goto</a></td>
+            <td><a href="${pageContext.request.contextPath}/teacher/courses/${course.id}/studentGroup/${studentGroup.id}/statistics">Student statistics</a></td>
         </tr>
     </c:forEach>
     </tbody>

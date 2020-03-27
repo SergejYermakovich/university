@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,6 +47,9 @@ public class TeacherController {
 
     @Autowired
     private StudentGroupService studentGroupService;
+
+    @Autowired
+    private StudentService studentService;
 
     @Autowired
     private LabService labService;
@@ -91,6 +95,38 @@ public class TeacherController {
 
         return "teacher_student_group";
     }
+
+
+    @RequestMapping(value = "/courses/{courseId}/studentGroup/{studentGroupId}/statistics", method = RequestMethod.GET)
+    public String studentStatistics(Model model, @PathVariable Long courseId, @PathVariable Long studentGroupId) {
+        StudentGroup studentGroup = studentGroupService.findById(studentGroupId).orElseThrow(StudentGroupNotFoundException::new);
+        List<Student> studentList = studentService.findAllByStudentGroup(studentGroup);
+        List<Lab> labList = labService.findAll();
+        int allLabsQuantity = labService.findMaxOrder(courseId).orElse(0);
+
+        List<StudentLabStatistics> studentLabStatistics = new ArrayList<>();
+        for (Student student : studentList) {
+            int onReview = 0, done = 0, inProgress = 0;
+            for (Lab lab : labList) {
+                if (lab.getStudent().getId().equals(student.getId())) {
+                    if (lab.getStatus() == LabStatus.IN_PROGRESS) {
+                        inProgress++;
+                    } else if (lab.getStatus() == LabStatus.IN_REVIEW) {
+                        onReview++;
+                    } else if (lab.getStatus() == LabStatus.DONE) {
+                        done++;
+                    }
+                }
+            }
+            StudentLabStatistics statistics = new StudentLabStatistics(student,onReview,done,inProgress);
+            studentLabStatistics.add(statistics);
+        }
+
+        model.addAttribute("allLabsQuantity", allLabsQuantity);
+        model.addAttribute("studentLabStatistics", studentLabStatistics);
+        return "teacher_student_group_statistics";
+    }
+
 
     @RequestMapping(value = "/courses/{courseId}/studentGroup/{studentGroupId}/approveReport/{fileName}", method = RequestMethod.GET)
     public String approveReport(@PathVariable Long courseId, @PathVariable Long studentGroupId, @PathVariable String fileName, Authentication authentication) {
