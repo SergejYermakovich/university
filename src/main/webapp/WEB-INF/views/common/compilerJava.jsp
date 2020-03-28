@@ -24,24 +24,19 @@
 <button id="run" onclick='run();'>Run</button>
 <p>Output:</p>
 <pre id="output">Waiting...</pre>
-</body>
+
 <script>
     var code;
     code = ace.edit("code");                      // создаем редактор из элемента с id="code"
     code.setTheme("ace/theme/textmate");          // выбираем тему оформления для подсветки синтаксиса
-    code.getSession().setMode("ace/mode/c_cpp");  // говорим что код надо подсвечивать как C++ код
+    code.getSession().setMode("ace/mode/java");  // говорим что код надо подсвечивать как java
     code.setShowPrintMargin(false);               // опционально: убираем вертикальную границу в 80 сиволов
     code.setOptions({
         maxLines: Infinity,                       // опционально: масштабировать редактор вертикально по размеру кода
-        fontSize: "12pt",// опционально: размер шрифта ставим побольше
-        // enableBasicAutocompletion: true,
-        // enableSnippets: true,
-        // enableLiveAutocompletion: true
+        fontSize: "12pt",                         // опционально: размер шрифта ставим побольше
     });
-    //code.$blockScrolling = Infinity;              // отключаем устаревшие, не поддерживаемые фишки редактора
-    // code.setTheme("ace/theme/twilight");
-    // var CppMode = require("ace/mode/c_cpp").Mode;
-    // code.getSession().setMode(new CppMode());
+    code.$blockScrolling = Infinity;              // отключаем устаревшие, не поддерживаемые фишки редактора
+
     function run() {
         // var cmd = "g++ -Wall main.cpp -o main_prog && echo 'Compilation: SUCCESS."
         //     + " Program output is:\n' && ./main_prog && echo \"\nExit code: $?\"";
@@ -68,4 +63,6 @@
         });
     }
 </script>
+</body>
 </html>
+

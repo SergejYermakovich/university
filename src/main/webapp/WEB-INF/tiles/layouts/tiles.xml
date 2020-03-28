@@ -49,6 +49,12 @@
         <put-attribute name="body" value="/WEB-INF/views/common/compilerC.jsp"/>
     </definition>
 
+
+    <definition name="compilerJava" extends="default">
+        <put-attribute name="title" value="compilerJava"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/compilerJava.jsp"/>
+    </definition>
+
     <definition name="calculator" extends="default">
         <put-attribute name="title" value="calculator"/>
         <put-attribute name="body" value="/WEB-INF/views/common/calculator.jsp"/>

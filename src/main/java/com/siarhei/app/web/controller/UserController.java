@@ -154,6 +154,11 @@ public class UserController {
         return "compilerC";
     }
 
+    @RequestMapping(value = "/compilerJava", method = RequestMethod.GET)
+    public String compilerJava() {
+        return "compilerJava";
+    }
+
     @RequestMapping(value = "/calculator", method = RequestMethod.GET)
     public String calculate() {
         return "calculator";
