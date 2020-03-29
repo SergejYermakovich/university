@@ -144,6 +144,11 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/entertainment", method = RequestMethod.GET)
+    public String getEntertainment() {
+        return "entertainment";
+    }
+
     @RequestMapping(value = "/instruments", method = RequestMethod.GET)
     public String getInstruments() {
         return "instruments";
@@ -168,4 +173,10 @@ public class UserController {
     public String translate() {
         return "translator";
     }
+
+    @RequestMapping(value = "/snakeGame", method = RequestMethod.GET)
+    public String snakeGame() {
+        return "snakeGame";
+    }
+
 }

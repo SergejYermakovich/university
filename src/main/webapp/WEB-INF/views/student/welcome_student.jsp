@@ -11,6 +11,7 @@
     <!-- <li><a href="${pageContext.request.contextPath}/student/labs">All labs</a></li> -->
     <li><a href="${pageContext.request.contextPath}/student/courses">All courses</a></li>
     <li><a href="${pageContext.request.contextPath}/instruments">Instruments</a></li>
+    <li><a href="${pageContext.request.contextPath}/entertainment">Entertainment</a></li>
 </ul>
 </body>
 </html>

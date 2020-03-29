@@ -11,6 +11,7 @@
     <li><a href="${pageContext.request.contextPath}/admin/search">User searching</a></li>
     <li><a href="${pageContext.request.contextPath}/admin/createTeacher">createTeacher</a></li>
     <li><a href="${pageContext.request.contextPath}/instruments">Instruments</a></li>
+    <li><a href="${pageContext.request.contextPath}/entertainment">Entertainment</a></li>
 </ul>
 </body>
 </html>

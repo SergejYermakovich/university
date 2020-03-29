@@ -65,4 +65,14 @@
         <put-attribute name="body" value="/WEB-INF/views/common/translator.jsp"/>
     </definition>
 
+    <definition name="entertainment" extends="default">
+        <put-attribute name="title" value="entertainment"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/entertainment.jsp"/>
+    </definition>
+
+    <definition name="snakeGame" extends="default">
+        <put-attribute name="title" value="snakeGame"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/snakeGame.jsp"/>
+    </definition>
+
 </tiles-definitions>
