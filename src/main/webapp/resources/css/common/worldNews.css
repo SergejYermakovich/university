@@ -1,0 +1,67 @@
+body
+{
+    background:linear-gradient(120deg,#e6e6e6,#838383);
+
+    background-repeat:no-repeat;
+}
+#fp
+{
+    font-size:15vw;
+    font-family:Jacques Francois Shadow;
+}
+#lp
+{
+    font-family:Raleway;
+}
+#tt
+{
+    height:17vw;
+    width:100%;
+    background-color:#454545;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.n
+{
+    height:75vw;
+    width:90%;
+    box-shadow:0 0 10px 5px #212121;
+    border-radius:5%;
+    display:none;
+    background:white;
+
+    margin-top: 10px;
+    overflow-x: auto;
+}
+button
+{
+    height:11vw;
+    width:28vw;
+    border:1vw white double;
+    margin:2vw;
+    font-size:3vw;
+    background:none;
+    font-family:Allerta Stencil;
+    outline:none;
+}
+#pb1,#pb2,#pb3,#pb4,#pb4
+{
+    font-size:4vw;
+    font-family:Times New Roman;
+    text-decoration:none;
+    font-style:none;
+}
+#li1,#li2,#li3,#li4,#li5
+{
+    font-family:Allerta Stencil;
+}
+#tit1,#tit2,#tit3,#tit4,#tit5
+{
+    font-family:Alegreya;
+}
+#des1,#des2,#des3,#des4,#des5
+{
+    font-family:Times New Roman;
+}

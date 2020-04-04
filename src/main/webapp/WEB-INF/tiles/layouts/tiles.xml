@@ -75,4 +75,19 @@
         <put-attribute name="body" value="/WEB-INF/views/common/snakeGame.jsp"/>
     </definition>
 
+    <definition name="worldMap" extends="default">
+        <put-attribute name="title" value="worldMap"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/worldMap.jsp"/>
+    </definition>
+
+    <definition name="musicPlayer" extends="default">
+        <put-attribute name="title" value="musicPlayer"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/musicPlayer.jsp"/>
+    </definition>
+
+    <definition name="worldNews" extends="default">
+        <put-attribute name="title" value="worldNews"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/worldNews.jsp"/>
+    </definition>
+
 </tiles-definitions>

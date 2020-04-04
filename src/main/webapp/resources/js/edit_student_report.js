@@ -1,7 +1,6 @@
 const textareaValue = document.querySelector("#textarea");
 const saveReport = document.querySelector("#save_report");
 saveReport.addEventListener("click", () => {
-  alert(document.querySelector("#textarea").value);
     const saveReport = save_report(document.querySelector("#textarea").value);
 });
 
@@ -23,7 +22,6 @@ function save_report(text) {
         },
         success: function () {
             alert("Report is saved!");
-            //alert(this.url);
         }
     });
 }

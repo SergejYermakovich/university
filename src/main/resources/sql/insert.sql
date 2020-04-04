@@ -17,8 +17,6 @@ VALUES (1, 'serge', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcX
        (9, 'stud4', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', true, 'sergei','guts');
 
 
-
-
 INSERT INTO roles
 VALUES (1, 'ROLE_STUDENT');
 INSERT INTO roles

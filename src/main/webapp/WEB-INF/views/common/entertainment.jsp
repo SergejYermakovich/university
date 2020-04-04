@@ -11,7 +11,7 @@
 <li><a href="${pageContext.request.contextPath}/musicPlayer">Music player</a></li>
 <li><a href="${pageContext.request.contextPath}/worldMap">Interactive world weather map</a></li>
 <li><a href="${pageContext.request.contextPath}/snakeGame">Snake Game</a></li>
-<li><a href="${pageContext.request.contextPath}/"> </a></li>
+<li><a href="${pageContext.request.contextPath}/worldNews">World News</a></li>
 </ul>
 </body>
 </html>

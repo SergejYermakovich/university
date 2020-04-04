@@ -179,4 +179,19 @@ public class UserController {
         return "snakeGame";
     }
 
+    @RequestMapping(value = "/worldMap", method = RequestMethod.GET)
+    public String worldMap() {
+        return "worldMap";
+    }
+
+    @RequestMapping(value = "/musicPlayer", method = RequestMethod.GET)
+    public String musicPlayer() {
+        return "musicPlayer";
+    }
+
+    @RequestMapping(value = "/worldNews", method = RequestMethod.GET)
+    public String worldNews() {
+        return "worldNews";
+    }
+
 }
