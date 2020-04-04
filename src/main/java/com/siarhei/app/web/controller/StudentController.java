@@ -102,12 +102,6 @@ public class StudentController {
         return "student_courses";
     }
 
-    @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
-    public String courseMenu(Model model, @PathVariable Long id) {
-        model.addAttribute("courseId", id);
-        return "student_course_menu";
-    }
-
     @RequestMapping(value = "/courses/{id}/news", method = RequestMethod.GET)
     public String studentCourseNews(Model model, @PathVariable Long id) {
         Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);

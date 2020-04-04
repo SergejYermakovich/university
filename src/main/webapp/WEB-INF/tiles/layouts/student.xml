@@ -33,11 +33,6 @@
         <put-attribute name="body" value="/WEB-INF/views/student/student_courses.jsp"/>
     </definition>
 
-    <definition name="student_course_menu" extends="default">
-        <put-attribute name="title" value="student_course_menu"/>
-        <put-attribute name="body" value="/WEB-INF/views/student/student_course_menu.jsp"/>
-    </definition>
-
     <definition name="student_course_news" extends="default">
         <put-attribute name="title" value="student_course_news"/>
         <put-attribute name="body" value="/WEB-INF/views/student/student_course_news.jsp"/>

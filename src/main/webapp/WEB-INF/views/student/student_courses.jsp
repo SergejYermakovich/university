@@ -14,7 +14,8 @@
         <tr>
             <td>${course.name}</td>
             <td>${course.description}</td>
-            <td><a href="${pageContext.request.contextPath}/student/courses/${course.id}">Course menu</a></td>
+            <td><a href="${pageContext.request.contextPath}/student/courses/${course.id}/news">News of this course</a> </td>
+            <td><a href="${pageContext.request.contextPath}/student/courses/${course.id}/labs">Your labs of this course</a> </td>
         </tr>
     </c:forEach>
     </tbody>
