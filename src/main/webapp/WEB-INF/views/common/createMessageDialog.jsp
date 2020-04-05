@@ -30,7 +30,7 @@
         <c:forEach var="user" items="${userList}">
             <tr>
                 <td>${user.login}</td>
-                <td><a href="<c:url value='/message/dialog/${user.id}'/>">Send</a></td>
+                <td><a href="<c:url value='/message/dialog/${user.id}'/>">Open dialog</a></td>
             </tr>
         </c:forEach>
         </tbody>

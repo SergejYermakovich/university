@@ -27,13 +27,15 @@ public class MessageController {
     private UserService userService;
 
     @Autowired
-    MessageService messageService;
+    private MessageService messageService;
 
     @RequestMapping(value = "/createMessageDialog", method = RequestMethod.GET)
     public String createMessageDialog(Model model, Authentication authentication) {
         List<User> userList = userService.findAll();
         userList.removeIf(user -> authentication.getName().equals(user.getLogin()));
         model.addAttribute("userList", userList);
+
+
         return "createMessageDialog";
     }
 

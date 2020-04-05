@@ -3,14 +3,8 @@ package com.siarhei.app.web.controller;
 import com.siarhei.app.core.exceptions.RoleNotFoundException;
 import com.siarhei.app.core.exceptions.UserAlreadyExistsException;
 import com.siarhei.app.core.exceptions.UserNotFoundException;
-import com.siarhei.app.core.model.Role;
-import com.siarhei.app.core.model.RoleName;
-import com.siarhei.app.core.model.Student;
-import com.siarhei.app.core.model.User;
-import com.siarhei.app.core.service.RoleService;
-import com.siarhei.app.core.service.StudentGroupService;
-import com.siarhei.app.core.service.StudentService;
-import com.siarhei.app.core.service.UserService;
+import com.siarhei.app.core.model.*;
+import com.siarhei.app.core.service.*;
 import com.siarhei.app.web.dto.StudentInDto;
 import com.siarhei.app.web.dto.mapper.StudentDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,25 +22,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Controller
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    StudentService studentService;
+    private StudentService studentService;
 
     @Autowired
-    StudentGroupService studentGroupService;
+    private StudentGroupService studentGroupService;
 
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
     @Autowired
-    StudentDtoMapper studentDtoMapper;
+    private NotificationService notificationService;
+
+    @Autowired
+    private MessageService messageService;
+
+    @Autowired
+    private StudentDtoMapper studentDtoMapper;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
@@ -71,12 +72,13 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/welcome_student"}, method = RequestMethod.GET)
-    public String welcomeStudent(Authentication authentication) {
+    public String welcomeStudent(Authentication authentication, Model model) {
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         Student student = studentService.findByUser(user);
         if (student == null) {
             return "redirect:/createStudentForUser";
         }
+        addCountersOnPage(user,model);
         return "welcome_student";
     }
 
@@ -102,12 +104,16 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/welcome_admin"}, method = RequestMethod.GET)
-    public String welcomeAdmin() {
+    public String welcomeAdmin(Authentication authentication , Model model) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        addCountersOnPage(user,model);
         return "welcome_admin";
     }
 
     @RequestMapping(value = {"/welcome_teacher"}, method = RequestMethod.GET)
-    public String welcomeTeacher() {
+    public String welcomeTeacher(Authentication authentication , Model model) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        addCountersOnPage(user,model);
         return "welcome_teacher";
     }
 
@@ -194,4 +200,37 @@ public class UserController {
         return "worldNews";
     }
 
+    @RequestMapping(value = "/notifications", method = RequestMethod.GET)
+    public String notifications(Authentication authentication, Model model) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        List<Notification> notificationList = notificationService.findAllByUser(user);
+        model.addAttribute("notificationList", notificationList);
+        viewNotifications(notificationList);
+        return "notifications";
+    }
+
+    private void viewNotifications(List<Notification> notificationList) {
+        for (Notification notification : notificationList) {
+            notification.setViewed(true);
+            notificationService.save(notification);
+        }
+    }
+
+    private void addCountersOnPage(User user, Model model) {
+        List<Notification> notificationList = notificationService.findAllByUser(user);
+        int notificationCounter = 0, messageCounter = 0;
+        for (Notification notification : notificationList) {
+            if (!notification.isViewed()) {
+                notificationCounter++;
+            }
+        }
+        List<Message> messageList = messageService.findAllByTo(user);
+        for (Message message : messageList) {
+            if (!message.isViewed()) {
+                messageCounter++;
+            }
+        }
+        model.addAttribute("notificationCounter", notificationCounter);
+        model.addAttribute("messageCounter", messageCounter);
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,5 +31,10 @@ public class NotificationServiceImpl implements NotificationService {
         notification.setUser(toWhom);
         notification.setViewed(false);
         return notification;
+    }
+
+    @Override
+    public List<Notification> findAllByUser(User user) {
+        return notificationRepository.findAllByUser(user);
     }
 }

@@ -90,4 +90,9 @@
         <put-attribute name="body" value="/WEB-INF/views/common/worldNews.jsp"/>
     </definition>
 
+    <definition name="notifications" extends="default">
+        <put-attribute name="title" value="notifications"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/notifications.jsp"/>
+    </definition>
+
 </tiles-definitions>
