@@ -27,12 +27,21 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="user" items="${userList}">
+        <c:forEach items="${userIntegerMap}" var="entry">
             <tr>
-                <td>${user.login}</td>
-                <td><a href="<c:url value='/message/dialog/${user.id}'/>">Open dialog</a></td>
+                <td>${entry.key.login}</td>
+                <td><a href="<c:url value='/message/dialog/${entry.key.id}'/>">Open dialog</a></td>
+                <td>Unread messages: ${entry.value}</td>
             </tr>
         </c:forEach>
+
+
+<%--        <c:forEach var="user" items="${userList}">--%>
+<%--            <tr>--%>
+<%--                <td>${user.login}</td>--%>
+<%--                <td><a href="<c:url value='/message/dialog/${user.id}'/>">Open dialog</a></td>--%>
+<%--            </tr>--%>
+<%--        </c:forEach>--%>
         </tbody>
     </table>
 </div>

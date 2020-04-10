@@ -13,4 +13,5 @@ public interface MessageService {
 
     List<Message> findAllByTo(User to);
 
+    List<Message> findAllByFrom(User from);
 }

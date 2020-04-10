@@ -32,5 +32,10 @@ public class MessageServiceImpl implements MessageService {
         return messageRepository.findAllByTo(to);
     }
 
+    @Override
+    public List<Message> findAllByFrom(User from) {
+        return messageRepository.findAllByFrom(from);
+    }
+
 
 }

@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("message/")
@@ -34,8 +31,12 @@ public class MessageController {
         List<User> userList = userService.findAll();
         userList.removeIf(user -> authentication.getName().equals(user.getLogin()));
         model.addAttribute("userList", userList);
-
-
+        Map<User, Integer> userIntegerMap = new HashMap<>();
+        for (User user : userList) {
+            int messageCounter = (int) messageService.findAllByFrom(user).stream().filter(message -> !message.isViewed()).count();
+            userIntegerMap.put(user, messageCounter);
+        }
+        model.addAttribute("userIntegerMap", userIntegerMap);
         return "createMessageDialog";
     }
 

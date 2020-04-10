@@ -13,4 +13,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     List<Message> findAllByToAndFrom(Long toId, Long fromId);
 
     List<Message> findAllByTo(User to);
+
+    List<Message> findAllByFrom(User from);
 }
