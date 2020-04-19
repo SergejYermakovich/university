@@ -8,6 +8,9 @@
 <form>
     <input type="button" value="Go back!" onclick="history.back()">
 </form>
+<c:if test="${notificationList.size() eq 0}">
+    You do not have any notifications
+</c:if>
 <table>
     <tbody>
     <c:forEach var="notification" items="${notificationList}">

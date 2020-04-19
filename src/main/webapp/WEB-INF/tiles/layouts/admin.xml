@@ -28,4 +28,13 @@
         <put-attribute name="body" value="/WEB-INF/views/admin/userInfoForAdmin.jsp"/>
     </definition>
 
+    <definition name="studentGroupAdministration" extends="default">
+        <put-attribute name="title" value="Student Group Administration"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/studentGroupAdministration.jsp"/>
+    </definition>
+
+    <definition name="courseAdministration" extends="default">
+        <put-attribute name="title" value="Course Administration"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/courseAdministration.jsp"/>
+    </definition>
 </tiles-definitions>

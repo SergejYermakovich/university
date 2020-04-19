@@ -13,6 +13,9 @@
 </form>
 <h1>Student course labs:</h1>
 <h2>IN_PROGRESS</h2>
+<c:if test="${labsInProgress.size() eq 0}">
+    You do not have any labsInProgress
+</c:if>
 <table>
     <tbody>
     <c:forEach var="lab" items="${labsInProgress}">
@@ -39,6 +42,9 @@
     </tbody>
 </table>
 <h2>IN_REVIEW</h2>
+<c:if test="${labsInReview.size() eq 0}">
+    You do not have any labsInReview
+</c:if>
 <table>
     <tbody>
     <c:forEach var="lab" items="${labsInReview}">
@@ -55,6 +61,9 @@
     </tbody>
 </table>
 <h2>DONE</h2>
+<c:if test="${labsDone.size() eq 0}">
+    You do not have any labsDone
+</c:if>
 <table>
     <tbody>
     <c:forEach var="lab" items="${labsDone}">

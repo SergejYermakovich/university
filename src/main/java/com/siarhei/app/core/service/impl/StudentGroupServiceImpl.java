@@ -19,6 +19,16 @@ public class StudentGroupServiceImpl implements StudentGroupService {
     private StudentGroupRepository studentGroupRepository;
 
     @Override
+    public StudentGroup save(StudentGroup studentGroup) {
+        return studentGroupRepository.save(studentGroup);
+    }
+
+    @Override
+    public void delete(StudentGroup studentGroup) {
+        studentGroupRepository.delete(studentGroup);
+    }
+
+    @Override
     public Optional<StudentGroup> findByName(String name) {
         return studentGroupRepository.findByName(name);
     }

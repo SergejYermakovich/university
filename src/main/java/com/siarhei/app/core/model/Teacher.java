@@ -11,7 +11,7 @@ public class Teacher {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    User user;
+    private User user;
 
     @Column(name = "category")
     private String category;

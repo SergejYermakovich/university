@@ -8,9 +8,9 @@
     <input type="button" value="Go back!" onclick="history.back()">
 </form>
 <h1>User Info: </h1>
-<h2>${user.id}</h2>
-<h2>${user.name}</h2>
-<h2>${user.surname}</h2>
-<h2>${user.active}</h2>
+<h2>user.id: ${user.id}</h2>
+<h2>user.name: ${user.name}</h2>
+<h2>user.surname: ${user.surname}</h2>
+<h2>user.active: ${user.active}</h2>
 </body>
 </html>

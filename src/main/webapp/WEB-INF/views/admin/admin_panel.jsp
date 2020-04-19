@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,6 +12,18 @@
 </form>
 
 <h1>Admin panel: </h1>
+<div>
+    <form:form method="get" action="/admin/courseAdministration">
+        <input type="submit" value="Course administration"/>
+    </form:form>
+</div>
+
+<div>
+    <form:form method="get" action="/admin/studentGroupAdministration">
+        <input type="submit" value="Student group administration"/>
+    </form:form>
+</div>
+
 
 <h2>Students: </h2>
 <table border="2">

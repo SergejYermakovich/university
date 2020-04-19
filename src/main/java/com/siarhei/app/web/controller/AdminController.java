@@ -1,23 +1,23 @@
 package com.siarhei.app.web.controller;
 
+import com.siarhei.app.core.exceptions.CourseNotFoundException;
+import com.siarhei.app.core.exceptions.StudentGroupNotFoundException;
 import com.siarhei.app.core.exceptions.UserNotFoundException;
-import com.siarhei.app.core.model.RoleName;
-import com.siarhei.app.core.model.Student;
-import com.siarhei.app.core.model.User;
-import com.siarhei.app.core.service.StudentService;
-import com.siarhei.app.core.service.TeacherService;
-import com.siarhei.app.core.service.UserService;
+import com.siarhei.app.core.model.*;
+import com.siarhei.app.core.service.*;
+import com.siarhei.app.web.dto.CourseInDto;
+import com.siarhei.app.web.dto.mapper.CourseDtoMapper;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("admin/")
@@ -27,10 +27,16 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
-    private StudentService studentService;
+    private StudentGroupService studentGroupService;
 
     @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    private CourseService courseService;
+
+    @Autowired
+    private CourseDtoMapper courseDtoMapper;
 
     @RequestMapping(value = "/panel", method = RequestMethod.GET)
     public String panel(Model model) {
@@ -93,8 +99,65 @@ public class AdminController {
     @RequestMapping(value = "/search/getInfo/{id}", method = RequestMethod.GET)
     public String getInfoAboutUser(Model model, @PathVariable Long id) {
         User user = userService.findById(id).orElseThrow(UserNotFoundException::new);
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "userInfoForAdmin";
     }
 
+    @RequestMapping(value = "/courseAdministration", method = RequestMethod.GET)
+    public String courseAdministration(Model model) {
+        List<Course> courses = courseService.getAll();
+        List<String> teachers = teacherService.findAll()
+                .stream()
+                .map(teacher -> teacher.getUser().getSurname())
+                .collect(Collectors.toList());
+        List<String> studentGroups = studentGroupService.getAll()
+                .stream()
+                .map(StudentGroup::getName)
+                .collect(Collectors.toList());
+        model.addAttribute("courseInDto", new CourseInDto());
+        model.addAttribute("courses", courses);
+        model.addAttribute("teachers", teachers);
+        model.addAttribute("studentGroups", studentGroups);
+        return "courseAdministration";
+    }
+
+    @RequestMapping(value = "/studentGroupAdministration", method = RequestMethod.GET)
+    public String studentGroupAdministration(Model model) {
+        List<StudentGroup> studentGroups = studentGroupService.getAll();
+        model.addAttribute("group", new StudentGroup());
+        model.addAttribute("groups", studentGroups);
+        return "studentGroupAdministration";
+    }
+
+    @RequestMapping(value = "/deleteCourse/{id}", method = RequestMethod.GET)
+    public String deleteCourse(@PathVariable Long id) {
+        Course course = courseService.getById(id).orElseThrow(CourseNotFoundException::new);
+        //courseservise -> delete
+        System.out.print("course deleted");
+        System.out.print("course deleted");
+        System.out.print("course deleted");
+        return "redirect:/admin/courseAdministration";
+    }
+
+    @RequestMapping(value = "/deleteGroup/{id}", method = RequestMethod.GET)
+    public String deleteGroup(@PathVariable Long id) {
+        StudentGroup studentGroup = studentGroupService.findById(id).orElseThrow(StudentGroupNotFoundException::new);
+        studentGroupService.delete(studentGroup);
+        return "redirect:/admin/studentGroupAdministration";
+    }
+
+
+    @RequestMapping(value = "/addCourse", method = RequestMethod.POST)
+    public String addCourse(@ModelAttribute("courseInDto") CourseInDto courseInDto, BindingResult bindingResult) {
+        Course course = new Course();
+        courseDtoMapper.fillFromInDto(course, courseInDto);
+        //  courseService.save(course); //troubles with teacher(попробовать написать скл скрипт)
+        return "redirect:/admin/courseAdministration";
+    }
+
+    @RequestMapping(value = "/addGroup", method = RequestMethod.POST)
+    public String addStudentGroup(@ModelAttribute("group") StudentGroup group, BindingResult bindingResult) {
+        studentGroupService.save(group);
+        return "redirect:/admin/studentGroupAdministration";
+    }
 }

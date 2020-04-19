@@ -9,6 +9,8 @@ import java.util.Optional;
 
 public interface CourseService {
 
+    Course save(Course course);
+
     Optional<Course> getById(long id);
 
     List<Course> getAllByStudentGroups(StudentGroup studentGroup);

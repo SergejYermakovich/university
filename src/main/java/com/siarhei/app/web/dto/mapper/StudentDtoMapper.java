@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class StudentDtoMapper {
 
     @Autowired
-    StudentGroupService studentGroupService;
+    private StudentGroupService studentGroupService;
 
     public void fillFromInDto(Student student, StudentInDto studentInDto) {
         String studentGroupStr = studentInDto.getStudentGroup();

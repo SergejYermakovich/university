@@ -17,7 +17,12 @@ import java.util.Optional;
 public class CourseServiceImpl implements CourseService {
 
     @Autowired
-    CourseRepository courseRepository;
+    private CourseRepository courseRepository;
+
+    @Override
+    public Course save(Course course) {
+        return courseRepository.saveAndFlush(course);
+    }
 
     @Override
     public Optional<Course> getById(long id) {

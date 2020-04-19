@@ -50,7 +50,13 @@ public class MessageController {
             userList.addAll(userService.findBySurname(search));
         }
         userList.removeIf(user -> authentication.getName().equals(user.getLogin()));
+        Map<User, Integer> userIntegerMap = new HashMap<>();
+        for (User user : userList) {
+            int messageCounter = (int) messageService.findAllByFrom(user).stream().filter(message -> !message.isViewed()).count();
+            userIntegerMap.put(user, messageCounter);
+        }
         model.addAttribute("userList", userList);
+        model.addAttribute("userIntegerMap", userIntegerMap);
         return "createMessageDialog";
     }
 

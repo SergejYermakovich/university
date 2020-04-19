@@ -8,6 +8,10 @@ import java.util.Optional;
 
 public interface StudentGroupService {
 
+    StudentGroup save(StudentGroup studentGroup);
+
+    void delete(StudentGroup studentGroup);
+
     Optional<StudentGroup> findByName(String name);
 
     List<StudentGroup> getAll();
