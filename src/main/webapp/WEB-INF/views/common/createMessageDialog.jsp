@@ -31,7 +31,14 @@
             <tr>
                 <td>${entry.key.login}</td>
                 <td><a href="<c:url value='/message/dialog/${entry.key.id}'/>">Open dialog</a></td>
-                <td>Unread messages: ${entry.value}</td>
+
+                <c:if test="${entry.value eq 0}">
+                    <td>                              </td>
+                </c:if>
+                <c:if test="${entry.value > 0}">
+                    <td>Unread messages: ${entry.value}</td>
+                </c:if>
+
             </tr>
         </c:forEach>
 

@@ -37,5 +37,10 @@ public class MessageServiceImpl implements MessageService {
         return messageRepository.findAllByFrom(from);
     }
 
+    @Override
+    public List<Message> findAll() {
+        return messageRepository.findAll();
+    }
+
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("message/")
@@ -33,7 +34,12 @@ public class MessageController {
         model.addAttribute("userList", userList);
         Map<User, Integer> userIntegerMap = new HashMap<>();
         for (User user : userList) {
-            int messageCounter = (int) messageService.findAllByFrom(user).stream().filter(message -> !message.isViewed()).count();
+            int messageCounter = (int) messageService.findAll()
+                    .stream()
+                    .filter(message -> message.getTo().getLogin().equals(authentication.getName()))
+                    .filter(message -> message.getFrom().getLogin().equals(user.getLogin()))
+                    .filter(message -> !message.isViewed())
+                    .count();
             userIntegerMap.put(user, messageCounter);
         }
         model.addAttribute("userIntegerMap", userIntegerMap);
@@ -52,7 +58,12 @@ public class MessageController {
         userList.removeIf(user -> authentication.getName().equals(user.getLogin()));
         Map<User, Integer> userIntegerMap = new HashMap<>();
         for (User user : userList) {
-            int messageCounter = (int) messageService.findAllByFrom(user).stream().filter(message -> !message.isViewed()).count();
+            int messageCounter = (int) messageService.findAll()
+                    .stream()
+                    .filter(message -> message.getTo().getLogin().equals(authentication.getName()))
+                    .filter(message -> message.getFrom().getLogin().equals(user.getLogin()))
+                    .filter(message -> !message.isViewed())
+                    .count();
             userIntegerMap.put(user, messageCounter);
         }
         model.addAttribute("userList", userList);
