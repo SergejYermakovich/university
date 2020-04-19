@@ -9,12 +9,15 @@
         <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
     </definition>
 
-    <definition name="login" extends="default">
+    <definition name="empty" template="/WEB-INF/tiles/layouts/empty.jsp">
+    </definition>
+
+    <definition name="login" extends="empty">
         <put-attribute name="title" value="Login"/>
         <put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
     </definition>
 
-    <definition name="registration" extends="default">
+    <definition name="registration" extends="empty">
         <put-attribute name="title" value="Registration"/>
         <put-attribute name="body" value="/WEB-INF/views/common/registration.jsp"/>
     </definition>

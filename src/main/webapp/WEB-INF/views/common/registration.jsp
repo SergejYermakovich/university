@@ -5,29 +5,50 @@
 <html>
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/registration.css">
 </head>
 <body>
-<form>
-    <input type="button" value="Go back!" onclick="history.back()">
-</form>
-<div class="common_container">
+
+<div class="input-form">
+        <input type="button" value="Go back!" onclick="history.back()">
+</div>
+
+<div class="form">
     <form:form method="post" modelAttribute="user" action="registration">
-        <label for="login">Login: </label>
-        <form:input path="login" id="login" placeholder="login"/>
-        <form:errors path="login"/>
-        <label for="password">Password: </label>
-        <form:input path="password" id="password" placeholder="password"/>
-        <form:errors path="password"/>
-        <label for="name">Name: </label>
-        <form:input path="name" id="name" placeholder="name"/>
-        <form:errors path="name"/>
-        <label for="surname">Surname: </label>
-        <form:input path="surname" id="surname" placeholder="surname"/>
-        <form:errors path="surname"/>
-        <input type="submit" value="Submit" class="register_button"/>
-        <c:if test="${userExists!=null}">
-            ${userExists}
-        </c:if>
+        <h1>Registration</h1>
+        <div class="input-form">
+<%--            <label for="login">Login: </label>--%>
+            <form:input path="login" id="login" placeholder="Login"/>
+            <form:errors path="login"/>
+        </div>
+
+        <div class="input-form">
+<%--            <label for="password">Password: </label>--%>
+            <form:input path="password" id="password" placeholder="Password"/>
+            <form:errors path="password"/>
+        </div>
+
+        <div class="input-form">
+<%--            <label for="name">Name: </label>--%>
+            <form:input path="name" id="name" placeholder="Name"/>
+            <form:errors path="name"/>
+        </div>
+
+        <div class="input-form">
+<%--            <label for="surname">Surname: </label>--%>
+            <form:input path="surname" id="surname" placeholder="Surname"/>
+            <form:errors path="surname"/>
+        </div>
+
+        <div class="input-form">
+            <input type="submit" value="Submit"/>
+        </div>
+
+        <div class="error">
+            <c:if test="${userExists!=null}">
+                ${userExists}
+            </c:if>
+        </div>
     </form:form>
 </div>
 </body>
