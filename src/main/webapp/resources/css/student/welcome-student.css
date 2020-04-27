@@ -34,13 +34,13 @@ cite span { font-weight: 400; color: #ccc; }
 .h20 { height: 20px }
 
 #templatemo_header {
-    width: 800px;
+    width: 1500px;
     margin: 0 auto;
     padding: 30px 0;
 }
 
 #templatemo_main {
-    width: 800px;
+    width: 1500px;
     height: 800px;
     overflow: hidden;
     margin: 0 auto;
@@ -48,7 +48,7 @@ cite span { font-weight: 400; color: #ccc; }
 
 #content{
     overflow:hidden;
-    width: 7000px;
+    width: 1500px;
     position:relative;
     height: 800px;
 }
@@ -56,33 +56,26 @@ cite span { font-weight: 400; color: #ccc; }
 .section {
     position:relative;
     float:left;
-    width: 1000px;
-    height: 487px;
+    width: 1500px;
+    height: 800px;
     margin-right: 20px;
 }
 
 .box { float: left; margin: 0 10px 10px 0 }
-#home_about { width: 400px; height: 400px }
-.home_box1 { width: 200px; height: 200px }
-.home_box2 { width: 400px; height: 200px }
-.home_box3 { width: 400px; height: 400px }
-.home_box4 { width: 200px; height: 200px; }
+
+#home_about { width: 500px; height: 460px }
+.home_box1 { width: 250px; height: 200px }
+.home_box2 { width:550px; height: 200px }
+.home_box3 { width: 500px; height: 400px }
+.home_box4 { width: 300px; height: 400px; }
+.home_box5 { width: 500px; height: 200px }
+.home_box6 { width: 350px; height: 200px; }
+.home_box7 { width: 450px; height: 200px; }
+
 .color1 { background: #d0b500 }
 .color2 { background: #c75000 }
 .color3 { background: #00afce }
 .color4 { background: #a4c700 }
-
-#social_links {
-    text-align: center;
-    padding: 40px 0 0 0
-}
-
-#social_links a {
-    display: block;
-    float: left;
-    width: 48px;
-    height: 48px;
-    margin-left: 12px
-}
-
-.no_mr { margin-right: 0 }
+.color5 { background: #00afce }
+.color6 { background: #a4c700 }
+.color7 { background: #00afce }

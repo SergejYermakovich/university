@@ -15,31 +15,31 @@
             </div>
 
 
-            <div class="box home_box3 color1">
+            <div class="box home_box1 color1">
                 <a href="${pageContext.request.contextPath}/student/courses"><img src="images/templatemo_services.jpg" alt="All courses"/></a>
             </div>
 
-            <div class="box home_box1 color1">
+            <div class="box home_box2 color1">
                 <a href="${pageContext.request.contextPath}/message/createMessageDialog"><img src="images/templatemo_services.jpg" alt="Messages"/></a>
             </div>
 
-            <div class="box home_box1 color1">
+            <div class="box home_box3 color1">
                 <a href="${pageContext.request.contextPath}/student/news"><img src="images/templatemo_services.jpg" alt="News"/></a>
             </div>
 
-            <div class="box home_box1 color1">
+            <div class="box home_box4 color1">
                 <a href="${pageContext.request.contextPath}/notifications"><img src="images/templatemo_services.jpg" alt="Notifications"/></a>
             </div>
 
-            <div class="box home_box4 color2">
+            <div class="box home_box5 color2">
                 <a href="${pageContext.request.contextPath}/settings"><img src="images/testimonial.jpg" alt="Settings"/></a>
             </div>
 
-            <div class="box home_box2 color3">
+            <div class="box home_box6 color3">
                 <a href="${pageContext.request.contextPath}/entertainment"><img src="images/contact.jpg" alt="entertainment"/></a>
             </div>
 
-            <div class="box home_box2 color4 no_mr">
+            <div class="box home_box7 color4">
                 <a href="${pageContext.request.contextPath}/instruments"><img src="images/testimonial.jpg" alt="instruments"/></a>
             </div>
         </div>
