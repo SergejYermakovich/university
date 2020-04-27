@@ -6,9 +6,7 @@
 </head>
 <body>
 <tiles:insertAttribute name="header" ignore="true"/>
-<br>
 <tiles:insertAttribute name="body" ignore="true"/>
-<br>
 <tiles:insertAttribute name="footer" ignore="true"/>
 </body>
 </html>
