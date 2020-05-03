@@ -5,38 +5,31 @@
         <div id="home" class="section">
 
             <div id="home_about" class="box">
+                <br>
                 <h2>Welcome, student</h2>
                 <p>System is made by <a href="http://www.vk.com/sergu98">Siarhei Yermakovich</a> for everyone on
                     <a href="http://www.spring.com">Spring Framework</a> and it can be used for educational purpose.
-                    Validate <a href="http://validator.w3.org/check?uri=referer"
-                                rel="nofollow"><strong>XHTML</strong></a> &amp; <a
-                            href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test test test test
-                    test test test test test test test test test test test test test test test test test !!!!
-
+                    <br>
+                    The <strong>News</strong> section is intended to display all current news of the course.
+                    <br>
+                    <strong>Messages</strong> section is necessary to send messages to absolutely all users of this service.
+                    You can contact your teacher or service administrator and solve any of your questions.
+                    <br>
+                    In the <strong>Courses</strong> section you will find out all the information about your courses,
+                    you will be able to complete assignments for these courses, find out the information you need and much more.
+                    <br>
+                    In the <strong>Notifications</strong> section, you can follow all the system notifications that are addressed to you.
+                    <br>
+                    You will need <strong>Settings</strong> in order to configure the operation of this service individually for you.
+                    <br>
+                    The <strong>Entertainment</strong> section is intended for a fun time student.
+                    Here you can find a music player, read news, play a game and much more.
+                    <br>
+                    The <strong>Instruments</strong> section includes all the necessary utilities that a student may need to study.
+                    You will find here: various compilers, a translator for different languages ​​of the world, and much more.
+                    <br>
+                    <br>
+                    Thank you for using particularly this service!!!
                     </p>
             </div>
 

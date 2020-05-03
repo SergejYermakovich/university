@@ -1,10 +1,11 @@
 body {
     /*background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jfif);*/
-    background: cornflowerblue;
+    /*background: cornflowerblue;*/
+    background: url("/resources/pictures/background/books.jpg") fixed;
     -webkit-background-size: cover;
     background-size: cover;
-    background-attachment: fixed;
     font-family: sans-serif;
+    zoom: 1.4;
 }
 
 .error {
