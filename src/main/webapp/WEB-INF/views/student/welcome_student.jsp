@@ -6,41 +6,68 @@
 
             <div id="home_about" class="box">
                 <h2>Welcome, student</h2>
-                <p>System is <a href="http://www.templatemo.com/page/1">made by Siarhei Yermakovich</a> for everyone on
+                <p>System is made by <a href="http://www.vk.com/sergu98">Siarhei Yermakovich</a> for everyone on
                     <a href="http://www.spring.com">Spring Framework</a> and it can be used for educational purpose.
                     Validate <a href="http://validator.w3.org/check?uri=referer"
                                 rel="nofollow"><strong>XHTML</strong></a> &amp; <a
                             href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.
-                    cssvsvs v dv.</p>
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test test test test
+                    test test test test test test test test test test test test test test test test test !!!!
+
+                    </p>
             </div>
 
 
             <div class="box home_box1 color1">
-                <a href="${pageContext.request.contextPath}/student/courses"><img src="images/templatemo_services.jpg" alt="All courses"/></a>
+                <a href="${pageContext.request.contextPath}/student/news"><img src="${pageContext.request.contextPath}/resources/pictures/icons/news.png" alt="News"/></a>
             </div>
 
-            <div class="box home_box2 color1">
-                <a href="${pageContext.request.contextPath}/message/createMessageDialog"><img src="images/templatemo_services.jpg" alt="Messages"/></a>
+            <div class="box home_box2 color2">
+                <a href="${pageContext.request.contextPath}/message/createMessageDialog"><img src="${pageContext.request.contextPath}/resources/pictures/icons/messages.png" alt="Messages"/></a>
+                <div class="messageCounter"><strong>+${messageCounter}</strong></div>
             </div>
 
-            <div class="box home_box3 color1">
-                <a href="${pageContext.request.contextPath}/student/news"><img src="images/templatemo_services.jpg" alt="News"/></a>
+            <div class="box home_box3 color3">
+                <a href="${pageContext.request.contextPath}/student/courses"><img src="${pageContext.request.contextPath}/resources/pictures/icons/courses.png" alt="All courses"/></a>
             </div>
 
-            <div class="box home_box4 color1">
-                <a href="${pageContext.request.contextPath}/notifications"><img src="images/templatemo_services.jpg" alt="Notifications"/></a>
+            <div class="box home_box4 color4">
+                <a href="${pageContext.request.contextPath}/notifications"><img src="${pageContext.request.contextPath}/resources/pictures/icons/notifications.png" alt="Notifications"/></a>
             </div>
 
-            <div class="box home_box5 color2">
-                <a href="${pageContext.request.contextPath}/settings"><img src="images/testimonial.jpg" alt="Settings"/></a>
+            <div class="box home_box5 color5">
+                <a href="${pageContext.request.contextPath}/settings"><img src="${pageContext.request.contextPath}/resources/pictures/icons/settings.png" alt="Settings"/></a>
             </div>
 
-            <div class="box home_box6 color3">
-                <a href="${pageContext.request.contextPath}/entertainment"><img src="images/contact.jpg" alt="entertainment"/></a>
+            <div class="box home_box6 color6">
+                <a href="${pageContext.request.contextPath}/entertainment"><img src="${pageContext.request.contextPath}/resources/pictures/icons/entertainment.png" alt="entertainment"/></a>
             </div>
 
-            <div class="box home_box7 color4">
-                <a href="${pageContext.request.contextPath}/instruments"><img src="images/testimonial.jpg" alt="instruments"/></a>
+            <div class="box home_box7 color7">
+                <a href="${pageContext.request.contextPath}/instruments"><img src="${pageContext.request.contextPath}/resources/pictures/icons/instruments.png" alt="instruments"/></a>
             </div>
         </div>
 
