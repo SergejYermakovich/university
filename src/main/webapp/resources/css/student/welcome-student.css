@@ -106,7 +106,10 @@ cite span {
 }
 
 #home_about {
-    background: rgba(0, 0, 0, .6);
+    /*background: rgba(0, 0, 0, .6);*/
+    background: #26527C;
+    opacity: 0.8;
+
     width: 500px;
     height: 610px
 }
@@ -195,6 +198,9 @@ cite span {
     margin-top: 90px;
     margin-right: 80px;
     font-size: 150px;
-    /*color: #00C618;*/
     font-family: "Jersey M54 Font", Geneva, SansSerif, sans-serif;
+}
+
+p {
+    text-indent: 1.5em
 }
