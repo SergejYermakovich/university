@@ -12,6 +12,9 @@
 </form>
 
 <h1>Admin panel: </h1>
+
+<a href="${pageContext.request.contextPath}/admin/createTeacher">createTeacher</a>
+
 <div>
     <form:form method="get" action="/admin/courseAdministration">
         <input type="submit" value="Course administration"/>
