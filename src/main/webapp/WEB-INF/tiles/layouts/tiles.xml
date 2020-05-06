@@ -77,7 +77,7 @@
         <put-attribute name="body" value="/WEB-INF/views/common/entertainment.jsp"/>
     </definition>
 
-    <definition name="snakeGame" extends="default">
+    <definition name="snakeGame" extends="empty">
         <put-attribute name="title" value="snakeGame"/>
         <put-attribute name="body" value="/WEB-INF/views/common/snakeGame.jsp"/>
     </definition>

@@ -13,22 +13,11 @@ body
 {
     font-family:Raleway;
 }
-#tt
-{
-    height:17vw;
-    width:100%;
-    background-color:#454545;
-    color:white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .n
 {
-    height:75vw;
+    height:25vw;
     width:90%;
     box-shadow:0 0 10px 5px #212121;
-    border-radius:5%;
     display:none;
     background:white;
 
@@ -46,7 +35,7 @@ button
     font-family:Allerta Stencil;
     outline:none;
 }
-#pb1,#pb2,#pb3,#pb4,#pb4
+#pb1,#pb2,#pb3,#pb4,#pb5
 {
     font-size:4vw;
     font-family:Times New Roman;

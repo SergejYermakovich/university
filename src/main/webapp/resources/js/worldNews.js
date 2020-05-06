@@ -1,4 +1,3 @@
-alert("This code shows you top headlines across the world,regarding various categories.\nTry this code and Stay Updated\nGive a few seconds for news articles to load.Click on the categories to get the Headlines!");
 function helo(se)
 {
     var d = new Date();

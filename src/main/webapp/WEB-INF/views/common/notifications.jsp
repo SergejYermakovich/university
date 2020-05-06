@@ -15,10 +15,8 @@
     <tbody>
     <c:forEach var="notification" items="${notificationList}">
         <tr>
-            <td>${notification.name}</td>
-            <td>${notification.description}</td>
-            <td>${notification.name}</td>
-            <td>${notification.description}</td>
+            <td>${notification.notificationMessage}</td>
+            <td>${notification.date}</td>
         </tr>
     </c:forEach>
     </tbody>

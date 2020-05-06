@@ -218,7 +218,8 @@ public class UserController {
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         List<Notification> notificationList = notificationService.findAllByUser(user);
         model.addAttribute("notificationList", notificationList);
-        viewNotifications(notificationList);
+//        viewNotifications(notificationList);
+        System.out.println(notificationList.size());
         return "notifications";
     }
 
