@@ -149,6 +149,19 @@ public class UserController {
             return "registration";
         }
     }
+    @RequestMapping(value = "/settings", method = RequestMethod.GET)
+    public String getSettings(Authentication authentication, Model model) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        model.addAttribute("user",user);
+        return "settings";
+    }
+
+    @RequestMapping(value = "/updateUserInSettings", method = RequestMethod.POST)
+    public String updateUserInSettings() {
+        System.out.println("user is updated!!!");
+        return "redirect:/settings";
+    }
+
 
     @RequestMapping(value = "/entertainment", method = RequestMethod.GET)
     public String getEntertainment() {

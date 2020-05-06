@@ -98,7 +98,6 @@ body{
 .top{
     background: var(--top-bg-color);
     height: 45vh;
-    border-radius: 0 0 30px 30px;
 }
 
 .top__cards-holder{
@@ -123,7 +122,6 @@ body{
     background: black;
     width: 35vh;
     height: 45vh;
-    border-radius: 30px;
     background-size: cover;
     background-position: center;
     display: inline-block;
@@ -224,7 +222,6 @@ body{
 .song-list__dp{
     height: 3rem;
     width: 3rem;
-    border-radius: 1rem;
 }
 
 .song-list__playedtime{
@@ -246,8 +243,6 @@ body{
 .bottom{
     background: var(--bottom-bg-color);
     height: 12vh;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
     position: absolute;
     bottom: 0;
     width: 100%;

@@ -5,7 +5,7 @@
 <html lang="en" >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-    <title>Music Player | Abdul Moqueet</title>
+    <title>Music Player</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Changa+One|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/musicPlayer.css">
@@ -45,10 +45,6 @@
     <div class="bottom">
 
         <div class="bottom__warpper">
-            <i class="material-icons bottom__up-arrow" onclick="showToast();">
-                keyboard_arrow_up
-            </i>
-
 
             <div class="bottom__song-info">
                 <div class="bottom__song-info__name" id="bottom-song-name">Sing Me To Sleep</div>
@@ -78,8 +74,6 @@
 <audio id="media-player" preload="auto">
     <source id="audio-source" src="songs/Sing_Me_To_Sleep.mp3" type="audio/mpeg">
 </audio>
-
-<div id="toast"><p>Coming in next verison</p></div>
 
 <div class="not-supported"><p>Sorry Minimum 350px Screen Height Required.</p></div>
 

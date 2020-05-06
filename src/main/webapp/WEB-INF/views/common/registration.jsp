@@ -15,7 +15,7 @@
 
 <div class="form">
     <form:form method="post" modelAttribute="user" action="registration">
-        <h1>Registration</h1>
+        <h1>Student registration:</h1>
         <div class="input-form">
 <%--            <label for="login">Login: </label>--%>
             <form:input path="login" id="login" placeholder="Login"/>

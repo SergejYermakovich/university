@@ -12,6 +12,10 @@
     <definition name="empty" template="/WEB-INF/tiles/layouts/empty.jsp">
     </definition>
 
+    <definition name="onlyheader" template="/WEB-INF/tiles/layouts/onlyheader.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/templates/header.jsp"/>
+    </definition>
+
     <definition name="login" extends="empty">
         <put-attribute name="title" value="Login"/>
         <put-attribute name="body" value="/WEB-INF/views/common/login.jsp"/>
@@ -98,4 +102,8 @@
         <put-attribute name="body" value="/WEB-INF/views/common/notifications.jsp"/>
     </definition>
 
+    <definition name="settings" extends="onlyheader">
+        <put-attribute name="title" value="Settings"/>
+        <put-attribute name="body" value="/WEB-INF/views/common/settings.jsp"/>
+    </definition>
 </tiles-definitions>

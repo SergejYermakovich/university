@@ -19,6 +19,9 @@
     </div>
 
     <div class="inlineHead info-button">
-            <input type="submit" value="?" class="info-style">
+        <input type="submit" value="?" class="info-style" onclick="
+            alert(
+                'test' +
+             'tes')">
     </div>
 </div>
