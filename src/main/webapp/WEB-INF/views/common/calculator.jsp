@@ -3,46 +3,26 @@
 <head>
     <title>calculator</title>
     <style>
-        /*!* Basic reset *!*/
-        /** {*/
-        /*    margin: 0;*/
-        /*    padding: 0;*/
-        /*    box-sizing: border-box;*/
-
-        /*    !* Better text styling *!*/
-        /*    !*font: bold 14px Arial, sans-serif;*!*/
-        /*}*/
-
-        /* Finally adding some IE9 fallbacks for gradients to finish things up */
-
-        /* A nice BG gradient */
-        /*html {*/
-        /*    height: 100%;*/
-        /*    background: white;*/
-        /*    background: radial-gradient(circle, #fff 20%, #ccc);*/
-        /*    background-size: cover;*/
-        /*}*/
-
-        /* Using box shadows to create 3D effects */
+        body {
+            background: url("/resources/pictures/background/books.jpg") fixed;
+        }
         #calculator {
             width: 325px;
             height: auto;
 
-            margin: 100px auto;
+            margin: 50px auto;
             padding: 20px 20px 9px;
 
             background: #9dd2ea;
             background: linear-gradient(#9dd2ea, #8bceec);
-            border-radius: 3px;
             box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0, 0, 0, 0.2);
+            zoom: 2;
         }
 
-        /* Top portion */
         .top span.clear {
             float: left;
         }
 
-        /* Inset shadow on the screen to create indent */
         .top .screen {
             height: 40px;
             width: 212px;
@@ -52,10 +32,9 @@
             padding: 0 10px;
 
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
+
             box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
 
-            /* Typography */
             font-size: 17px;
             line-height: 40px;
             color: white;
@@ -64,10 +43,8 @@
             letter-spacing: 1px;
         }
 
-        /* Clear floats */
         .keys, .top {overflow: hidden;}
 
-        /* Applying same to the keys */
         .keys span, .top span.clear {
             float: left;
             position: relative;
@@ -79,7 +56,6 @@
             height: 36px;
 
             background: white;
-            border-radius: 3px;
             box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
 
             margin: 0 7px 11px 0;
@@ -88,15 +64,11 @@
             line-height: 36px;
             text-align: center;
 
-            /* prevent selection of text inside keys */
             user-select: none;
 
-            /* Smoothing out hover and active states using css3 transitions */
             transition: all 0.2s ease;
         }
 
-        /* Remove right margins from operator keys */
-        /* style different type of keys (operators/evaluate/clear) differently */
         .keys span.operator {
             background: #FFF0F5;
             margin-right: 0;
@@ -133,7 +105,6 @@
             color: white;
         }
 
-        /* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
         .keys span:active {
             box-shadow: 0px 0px #6b54d3;
             top: 4px;
@@ -148,21 +119,32 @@
             top: 4px;
             box-shadow: 0px 0px #d3545d;
         }
+        .back {
+            margin-top: 20px;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px;
+            font-size: 20px;
+            outline: none;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+            background: #0fc3f5;
+            transition: .3s;
+        }
     </style>
 </head>
 <body>
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back" onclick="history.back()" class="back">
 </form>
 <div id="calculator">
-    <!-- Screen and clear key -->
     <div class="top">
         <span class="clear">C</span>
         <div class="screen"></div>
     </div>
 
     <div class="keys">
-        <!-- operators and other keys -->
         <span>7</span>
         <span>8</span>
         <span>9</span>
