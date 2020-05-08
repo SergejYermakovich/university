@@ -7,29 +7,9 @@
 </head>
 <body>
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back" onclick="history.back()" class="back">
 </form>
-<%-- <div>--%>
-<%--&lt;%&ndash;     <iframe src="https://translate.google.by/#view=home&op=translate&sl=en&tl=ru"  width="100%" height="480">&ndash;%&gt;--%>
-<%--&lt;%&ndash;&lt;%&ndash;         <iframe class="embed-responsive-item" src="https://translate.yandex.by/" allowfullscreen width="100%" height="480">&ndash;%&gt;&ndash;%&gt;--%>
-<%--&lt;%&ndash;     </iframe>&ndash;%&gt;--%>
-<%--&lt;%&ndash;    <frame src="https://translate.google.by/#view=home&op=translate&sl=en&tl=ru"  width="100%" height="480" />&ndash;%&gt;--%>
-<%--    <frame src="https://translate.google.by"/>--%>
-<%-- </div>--%>
 
-
-
-<%--<h1>My Web Page</h1>--%>
-<%--<p>Hello everybody!</p>--%>
-<%--<p>Translate this page:</p>--%>
-<%--<div id="google_translate_element"></div>--%>
-<%--<script type="text/javascript">--%>
-<%--    function googleTranslateElementInit() {--%>
-<%--        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');--%>
-<%--    }--%>
-<%--</script>--%>
-<%--<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>--%>
-<%--<p>You can translate the content of this page by selecting a language in the select box.</p>--%>
 
 <div class="display">
 
@@ -48,7 +28,7 @@
             </select>
         </div>
         <div class="text-inp">
-            <textarea placeholder="Enter text" class="input" id="ttext"></textarea>
+            <textarea placeholder="Enter text" class="input textarea-section" id="ttext"></textarea>
         </div>
     </div>
     <div class="to">
@@ -78,8 +58,8 @@
                 <option value="ge">German</option>
             </select>
         </div>
-        <div id="output">
-            <textarea id="output-text-area"></textarea>
+        <div id="output" >
+            <textarea id="output-text-area" class="textarea-section"></textarea>
         </div>
     </div>
 
