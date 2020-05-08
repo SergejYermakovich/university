@@ -3,23 +3,29 @@
 <html>
 <head>
     <title>Notifications</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/notifications.css">
 </head>
 <body>
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back!" onclick="history.back()" class="go-back-button-nots">
 </form>
 <c:if test="${notificationList.size() eq 0}">
-    You do not have any notifications
+    <div class="no-notifications">
+        You do not have any notifications
+    </div>
 </c:if>
+
+<c:if test="${notificationList.size() > 0}">
+<h1>Notifications:</h1>
 <table>
-    <tbody>
     <c:forEach var="notification" items="${notificationList}">
         <tr>
-            <td>${notification.notificationMessage}</td>
-            <td>${notification.date}</td>
+            <td></td>
+            <td class="not-message">${notification.notificationMessage}</td>
+            <td class="not-date">${notification.date}</td>
         </tr>
     </c:forEach>
-    </tbody>
+    </c:if>
 </table>
 </body>
 </html>

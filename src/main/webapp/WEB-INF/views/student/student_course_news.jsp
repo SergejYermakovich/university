@@ -3,17 +3,17 @@
 <html>
 <head>
     <title>student course news</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/student/coursenews.css">
 </head>
 <body>
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back!" onclick="history.back()" class="go-back-button-news-st">
 </form>
 <h1>Student course news:</h1>
 <table>
     <tbody>
     <c:forEach var="news" items="${newsList}">
         <tr>
-            <td>${news.id}</td>
             <td>${news.name}</td>
             <td>${news.description}</td>
             <td>${news.date}</td>
