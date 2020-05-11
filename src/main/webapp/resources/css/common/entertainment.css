@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #ddd;
+    font-size: 12px;
+    line-height: 1.6em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background: url("/resources/pictures/background/books.jpg");
+}
+
+.link {
+    text-transform: uppercase;
+    font-size: 40px;
+    text-decoration: none;
+    color: #e6e6e6;
+    text-align: center;
+    display: inline-block;
+    margin-top: 150px;
+}
+
+.link2 {
+    text-transform: uppercase;
+    font-size: 40px;
+    text-decoration: none;
+    color: #e6e6e6;
+    text-align: center;
+    display: inline-block;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 58px;
+    margin: 0 0 30px;
+    padding: 5px 0
+}
+
+h2 {
+    font-size: 34px;
+    margin: 0 0 30px;
+    padding: 5px 0
+}
+
+#content-e {
+    overflow: hidden;
+    width: 820px;
+    /*position: relative;*/
+    height: 825px;
+
+    position: absolute;
+    top: 23%;
+    left: 35%;
+    margin: -125px 0 0 -125px;
+}
+
+.box {
+    float: left;
+    margin: 0 10px 10px 0;
+
+    text-align: center;
+}
+
+.home_box1 {
+    width: 400px;
+    height: 400px
+}
+
+.color1 {
+    background: #FF9200;
+    opacity: 0.8;
+}
+
+.color2 {
+    background: #c75000;
+    opacity: 0.8;
+}
+
+.color3 {
+    background: #FFC600;
+    opacity: 0.8;
+}
+
+.color4 {
+    background: #9DB82E;
+    opacity: 0.8;
+}
+
+.go-back-enter {
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px;
+    outline: none;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    background: #0fc3f5;
+    transition: .3s;
+}
+
+a {
+    line-height: 1.5;
+}

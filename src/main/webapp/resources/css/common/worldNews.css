@@ -1,8 +1,6 @@
 body
 {
-    background:linear-gradient(120deg,#e6e6e6,#838383);
-
-    background-repeat:no-repeat;
+    background: url("/resources/pictures/background/books.jpg");
 }
 #fp
 {
@@ -15,8 +13,8 @@ body
 }
 .n
 {
-    height:25vw;
-    width:90%;
+    height:15vw;
+    width:70%;
     box-shadow:0 0 10px 5px #212121;
     display:none;
     background:white;
@@ -28,23 +26,22 @@ button
 {
     height:11vw;
     width:28vw;
-    border:1vw white double;
-    margin:2vw;
+
+    margin:1vw;
     font-size:3vw;
-    background:none;
-    font-family:Allerta Stencil;
-    outline:none;
+
+    background: rgba(0, 0, 0, .6);
+    color: #e6e6e6;
 }
 #pb1,#pb2,#pb3,#pb4,#pb5
 {
-    font-size:4vw;
-    font-family:Times New Roman;
-    text-decoration:none;
-    font-style:none;
+    font-size: 2vw;
+    text-decoration: none;
+    font-style: none;
 }
 #li1,#li2,#li3,#li4,#li5
 {
-    font-family:Allerta Stencil;
+
 }
 #tit1,#tit2,#tit3,#tit4,#tit5
 {
@@ -53,4 +50,15 @@ button
 #des1,#des2,#des3,#des4,#des5
 {
     font-family:Times New Roman;
+}
+
+.go-back {
+    margin-left: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #fff;
+    background: #0fc3f5;
 }

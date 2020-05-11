@@ -6,6 +6,7 @@
     <script src="<c:url value="/resources/js/ace.js"/>"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/compiler.css">
     <style type="text/css" media="screen">
         #code {
             width: 100%;
@@ -17,13 +18,15 @@
 </head>
 <body>
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back" onclick="history.back()" class="go-back-compiler">
 </form>
 <div id="code">
 </div>
-<button id="run" onclick='run();'>Run</button>
+<button id="run" onclick='run();' class="run-program">Run</button>
+<div class="output-full">
 <p>Output:</p>
 <pre id="output">Waiting...</pre>
+</div>
 </body>
 <script>
     var code;

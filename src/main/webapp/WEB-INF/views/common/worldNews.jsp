@@ -13,9 +13,13 @@
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<form>
+    <input type="button" value="Go back!" onclick="history.back()" class="go-back">
+</form>
+
 <div id="tit" align="center">
     <button onclick="helo('Business')">Business</button>
-    <button onclick="helo('Entertainment')">Entertainment</button>
     <button onclick="helo('General')">General</button>
     <button onclick="helo('Health')">Health</button>
     <button onclick="helo('Science')">Science</button>
