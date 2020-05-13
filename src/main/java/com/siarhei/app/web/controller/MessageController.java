@@ -79,6 +79,8 @@ public class MessageController {
         Collections.sort(messageList);
         model.addAttribute("messageList", messageList);
         model.addAttribute("newMessage", new Message());
+        model.addAttribute("toUser", to.getName() + " " + to.getSurname());
+        model.addAttribute("toUserLogin",to.getLogin());
         return "showMessageDialog";
     }
 
