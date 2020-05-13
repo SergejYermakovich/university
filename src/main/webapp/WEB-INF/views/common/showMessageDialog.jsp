@@ -16,7 +16,7 @@
             <form>
                 <input type="button" value="Go back" onclick="history.back()" class="go-back">
             </form>
-            <img id="msg-img" alt="user" src="https://api.sololearn.com/Uploads/Avatars/1.jpg">
+            <img id="msg-img" alt="user" src="${pageContext.request.contextPath}/resources/pictures/user.png">
             <div id="msg-name-head">
                 <h2 id="msg-name">${toUser}</h2>
                 <div id="time">online</div>
@@ -37,7 +37,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="recicon">
-                        <img src="${pageContext.request.contextPath}/resources/pictures/background/books.jpg"/>
+                        <img src="${pageContext.request.contextPath}/resources/pictures/user.png"/>
                         <div class="msg"><p>${message.text}</p>  ${message.date}</div>
                     </div>
                 </c:otherwise>
