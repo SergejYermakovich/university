@@ -36,6 +36,7 @@
             <option value="ru">72</option>
         </select>
         <button id="export_pdf">Export in pdf</button>
+        <button id="import_file">Import file</button>
         <button id="save_report">Save</button>
     </label>
 </div>
@@ -46,23 +47,20 @@
 <c:if test="${labComments.size() > 0}">
     <div class="last-comment">
         <h1>Last comment:</h1>
-        <h5>-------------------------------------</h5>
         <h5>${lastComment.description}</h5>
-        <h5>${lastComment.date}</h5>
-        <h5>by ${lastComment.teacher.user.name} ${lastComment.teacher.user.surname}</h5>
-        <h5>-------------------------------------</h5>
+        <h5> by ${lastComment.teacher.user.name} ${lastComment.teacher.user.surname}</h5>
+        <h5> (date: ${lastComment.date})</h5>
     </div>
+    <script>
 
-    <div class="all-comments">
-        <h1>All comments:</h1>
-        <table>
-            <c:forEach var="labComment" items="${labComments}">
-                <tr>
-                    <td>${labComment.description}</td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
+    </script>
+    <button id="get-all-comments" onclick="
+            var allComments = 'All comments:\n';
+    <c:forEach var="labComment" items="${labComments}">
+            allComments+='${labComment.description}  by ${lastComment.teacher.user.name} ${lastComment.teacher.user.surname} (date: ${lastComment.date}) \n';
+    </c:forEach>
+            alert(allComments)">Get All Previous Comments
+    </button>
 </c:if>
 
 <meta name="_csrf" content="${_csrf.token}"/>

@@ -1,11 +1,11 @@
 label, textarea {
-    font-size: .8rem;
+    font-size: .9rem;
     letter-spacing: 1px;
 }
+
 textarea {
     padding: 10px;
     line-height: 1.5;
-    border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px #999;
 
@@ -36,12 +36,48 @@ body {
 }
 
 .last-comment {
+    padding-top: 1px;
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+    background: rgba(6, 76, 96, .6);
+}
+
+.last-comment h5 {
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.last-comment h1 {
 
 }
 
-.all-comments {
-
+#get-all-comments {
+    margin-top: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #fff;
+    background: #9DB82E;
+    width: 100%;
 }
+
+#import_file {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #fff;
+    background: rgba(6, 76, 96, .6);
+}
+
 #export_pdf {
     color: #fff;
     font-weight: bold;
