@@ -1,42 +1,27 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Add news</title>
-</head>
-<body>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/news/piece.css">
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back!" onclick="history.back()" class="go-back">
 </form>
-<form:form commandName="news">
-    <table>
-        <tr>
-            <td>
-                <form:label path="name">
-                    <spring:message text="name:"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="name"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="description">
-                    <spring:message text="description:"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="description"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="<spring:message text="Add"/>"/>
-            </td>
-        </tr>
-    </table>
-</form:form>
-</body>
-</html>
+<div class="form">
+    <h1>Create news:</h1>
+    <form:form commandName="news">
+        <div class="input-form">
+            <form:label path="name" cssClass="label-for-form">
+                <spring:message text="name:"/>
+            </form:label>
+            <form:input path="name"/>
+        </div>
+        <div class="input-form">
+            <form:label path="description"  cssClass="label-for-form">
+                <spring:message text="description:"/>
+            </form:label>
+            <form:input path="description"/>
+        </div>
+        <div class="input-form">
+            <input type="submit" value="Add"/>
+        </div>
+    </form:form>
+</div>

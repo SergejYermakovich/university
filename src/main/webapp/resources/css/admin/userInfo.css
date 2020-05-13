@@ -1,0 +1,45 @@
+.go-back {
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #fff;
+    background: #0fc3f5;
+
+    margin-left: 10px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #ddd;
+
+    background: url("/resources/pictures/background/books.jpg") fixed;
+}
+
+
+table {
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+td {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    width: 300px;
+}
+
+tr {
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: bold;
+    background: rgba(10, 40, 10, .6);
+
+}
+
+h1 {
+    margin-left: 10px;
+}

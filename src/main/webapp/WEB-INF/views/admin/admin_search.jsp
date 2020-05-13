@@ -2,35 +2,32 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>admin_search</title>
-</head>
-<body>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/search.css">
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back" onclick="history.back()" class="go-back">
 </form>
 
-<h2>Введите имя,фамилию или логин пользователя:</h2>
+<%--<h2>Enter name,surname or login of user:</h2>--%>
 <form:form method="post">
-    <input type="text" name="search"/>
-    <input type="submit" value="search"/>
+    <label>
+        <input type="text" name="search" class="search"/>
+        <input type="submit" value="search" class="search-button"/>
+    </label>
 </form:form>
 
 <c:choose>
     <c:when test="${users.size() ge 1}">
-        <h2>Users:</h2>
+<%--        <h2>Users:</h2>--%>
         <table>
             <tbody>
             <c:forEach var="user" items="${users}">
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.surname}</td>
+                    <td class="id">${user.id}</td>
+                    <td class="name">${user.name}</td>
+                    <td class="name">${user.surname}</td>
                     <td>
                         <form:form action="/admin/search/getInfo/${user.id}" method="get">
-                            <input type="submit" value="get Info"/>
+                            <input type="submit" value="get Info" class="get-info"/>
                         </form:form>
                     </td>
                 </tr>
@@ -42,5 +39,4 @@
         <h1>No users for this condition</h1>
     </c:otherwise>
 </c:choose>
-</body>
-</html>
+

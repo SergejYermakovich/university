@@ -7,7 +7,6 @@ import com.siarhei.app.core.model.*;
 import com.siarhei.app.core.service.*;
 import com.siarhei.app.web.dto.CourseInDto;
 import com.siarhei.app.web.dto.mapper.CourseDtoMapper;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +24,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private StudentGroupService studentGroupService;
@@ -100,6 +102,7 @@ public class AdminController {
     public String getInfoAboutUser(Model model, @PathVariable Long id) {
         User user = userService.findById(id).orElseThrow(UserNotFoundException::new);
         model.addAttribute("user", user);
+        model.addAttribute("userRole", "NOT LOADED YET");
         return "userInfoForAdmin";
     }
 
