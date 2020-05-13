@@ -2,54 +2,58 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/student/report.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>edit_student_report</title>
-    <style>
-        label,
-        textarea {
-            font-size: .8rem;
-            letter-spacing: 1px;
-        }
-        textarea {
-            padding: 10px;
-            line-height: 1.5;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-shadow: 1px 1px 1px #999;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Student report</title>
 </head>
 <body>
 <div>
     <form>
-        <input type="button" value="Go back!" onclick="history.back()">
+        <input type="button" value="Go back" onclick="history.back()" class="go-back">
     </form>
-    <button id="text_size">Text size</button>
-    <button id="text_style">Text style</button>
-    <button id="export_pdf">Export in pdf</button>
+
+    <label>
+        <select class="select-lang">
+            <option value="ar">Arial Black</option>
+            <option value="bn">Bookman Old Style</option>
+            <option value="zh">Brush Script mt</option>
+            <option value="gu">Calibri</option>
+            <option value="it">Courier New</option>
+            <option value="es">Lucida Sans Console</option>
+            <option value="en" selected>Times New Roman</option>
+            <option value="hi">Verdana</option>
+            <option value="ru">Westminster</option>
+        </select>
+        <select class="select-lang">
+            <option value="gu">6</option>
+            <option value="it">8</option>
+            <option value="es">10</option>
+            <option value="en" selected>12</option>
+            <option value="hi">14</option>
+            <option value="ru">16</option>
+            <option value="ru">18</option>
+            <option value="hi">36</option>
+            <option value="ru">72</option>
+        </select>
+        <button id="export_pdf">Export in pdf</button>
+        <button id="save_report">Save</button>
+    </label>
 </div>
 <label for="textarea"></label>
 <textarea id="textarea" rows="30" cols="265" value="">${document}</textarea>
-<div>
-    <button id="save_report">Save</button>
-</div>
+
 
 <c:if test="${labComments.size() > 0}">
-    <div>
+    <div class="last-comment">
         <h1>Last comment:</h1>
-        <h2>-------------------------------------</h2>
+        <h5>-------------------------------------</h5>
         <h5>${lastComment.description}</h5>
         <h5>${lastComment.date}</h5>
         <h5>by ${lastComment.teacher.user.name} ${lastComment.teacher.user.surname}</h5>
-        <h2>-------------------------------------</h2>
+        <h5>-------------------------------------</h5>
     </div>
 
-    <div>
+    <div class="all-comments">
         <h1>All comments:</h1>
         <table>
             <c:forEach var="labComment" items="${labComments}">
