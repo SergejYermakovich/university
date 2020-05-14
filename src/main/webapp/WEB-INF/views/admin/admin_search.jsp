@@ -6,8 +6,6 @@
 <form>
     <input type="button" value="Go back" onclick="history.back()" class="go-back">
 </form>
-
-<%--<h2>Enter name,surname or login of user:</h2>--%>
 <form:form method="post">
     <label>
         <input type="text" name="search" class="search"/>
@@ -17,7 +15,7 @@
 
 <c:choose>
     <c:when test="${users.size() ge 1}">
-<%--        <h2>Users:</h2>--%>
+
         <table>
             <tbody>
             <c:forEach var="user" items="${users}">
