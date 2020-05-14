@@ -21,7 +21,7 @@
     <div class="inlineHead info-button">
         <input type="submit" value="?" class="info-style" onclick="
             alert(
-                'test' +
-             'tes')">
+                'if you have a problem You can call on :\n' +
+             '+375 33 334 33 33 (MTC)')">
     </div>
 </div>
