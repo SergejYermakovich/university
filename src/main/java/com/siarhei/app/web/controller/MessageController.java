@@ -77,11 +77,19 @@ public class MessageController {
         User from = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         List<Message> messageList = messageService.findAllByToAndFrom(to.getId(), from.getId());
         Collections.sort(messageList);
+        readMessages(messageList);
         model.addAttribute("messageList", messageList);
         model.addAttribute("newMessage", new Message());
         model.addAttribute("toUser", to.getName() + " " + to.getSurname());
-        model.addAttribute("toUserLogin",to.getLogin());
+        model.addAttribute("toUserLogin", to.getLogin());
         return "showMessageDialog";
+    }
+
+    private void readMessages(List<Message> messageList) {
+        for (Message message : messageList) {
+            message.setViewed(true);
+            messageService.save(message);
+        }
     }
 
     @RequestMapping(value = "/dialog/{id}", method = RequestMethod.POST)

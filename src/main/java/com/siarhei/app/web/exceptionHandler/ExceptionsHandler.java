@@ -1,5 +1,6 @@
 package com.siarhei.app.web.exceptionHandler;
 
+import com.siarhei.app.core.exceptions.InvalidFileFormatException;
 import com.siarhei.app.core.exceptions.PageNotFoundException;
 import com.siarhei.app.core.exceptions.UserAlreadyExistsException;
 import com.siarhei.app.core.exceptions.UserNotFoundException;
@@ -32,6 +33,12 @@ public class ExceptionsHandler {
     @ExceptionHandler(PageNotFoundException.class)
     public String handle404Exception() {
         return "page_not_found";
+    }
+
+
+    @ExceptionHandler(InvalidFileFormatException.class)
+    public String handleInvalidFileFormatException() {
+        return "InvalidFileFormatPage";
     }
 
 

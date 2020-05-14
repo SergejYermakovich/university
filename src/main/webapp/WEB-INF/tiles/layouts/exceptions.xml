@@ -8,9 +8,9 @@
         <put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp"/>
     </definition>
 
-    <definition name="page_not_found" extends="default">
-        <put-attribute name="title" value="page_not_found"/>
-        <put-attribute name="body" value="/WEB-INF/views/exceptions/page_not_found.jsp"/>
+    <definition name="InvalidFileFormatPage" extends="default">
+        <put-attribute name="title" value="InvalidFileFormat"/>
+        <put-attribute name="body" value="/WEB-INF/views/exceptions/InvalidFileFormatPage.jsp"/>
     </definition>
 
 </tiles-definitions>

@@ -1,18 +1,22 @@
 package com.siarhei.app.web.controller;
 
-import com.siarhei.app.core.exceptions.CourseNotFoundException;
-import com.siarhei.app.core.exceptions.StudentGroupNotFoundException;
-import com.siarhei.app.core.exceptions.UserNotFoundException;
+import com.siarhei.app.core.exceptions.*;
 import com.siarhei.app.core.model.*;
 import com.siarhei.app.core.service.*;
 import com.siarhei.app.web.dto.CourseInDto;
 import com.siarhei.app.web.dto.mapper.CourseDtoMapper;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -162,5 +166,38 @@ public class AdminController {
     public String addStudentGroup(@ModelAttribute("group") StudentGroup group, BindingResult bindingResult) {
         studentGroupService.save(group);
         return "redirect:/admin/studentGroupAdministration";
+    }
+
+
+    @RequestMapping(value = "/addStudents", method = RequestMethod.POST)
+    public String addSomeUsers(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+        System.out.println(multipartFile.getContentType());
+        if (!(multipartFile.getContentType().contains("csv") || multipartFile.getContentType().contains("application/octet-stream"))) {
+            throw new InvalidFileFormatException();
+        }
+        System.out.println(multipartFile.getContentType());
+
+        File convertedFile = new File(multipartFile.getOriginalFilename());
+        //convertedFile.createNewFile();
+        FileOutputStream fos = new FileOutputStream(convertedFile);
+        fos.write(multipartFile.getBytes());
+        fos.close();
+
+
+        LineIterator it = FileUtils.lineIterator(convertedFile, "UTF-8");
+        try {
+            while (it.hasNext()) {
+                String line = it.nextLine();
+                parseUser(line);
+
+            }
+        } finally {
+            LineIterator.closeQuietly(it);
+        }
+        return "redirect:/admin/panel";
+    }
+
+    private void parseUser(String line) {
+        System.out.println(line);
     }
 }
