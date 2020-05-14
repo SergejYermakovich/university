@@ -1,29 +1,50 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>admin panel</title>
-</head>
-<body>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/panel.css">
 
 <form>
-    <input type="button" value="Go back!" onclick="history.back()">
+    <input type="button" value="Go back!" onclick="history.back()" class="go-back">
 </form>
 
 <h1>Admin panel: </h1>
 
-<a href="${pageContext.request.contextPath}/admin/createTeacher">createTeacher</a>
-
-<div>
-    <form:form method="get" action="/admin/courseAdministration">
-        <input type="submit" value="Course administration"/>
+<div class="importStudents">
+    <form:form enctype="multipart/form-data" action="/admin/addStudents?_csrf=${_csrf.token}">
+        <table>
+            <tr>
+                <td>
+                    choose a file with students:
+                </td>
+                <td>
+                    <input type="file" name="file"   class="get-button colorTwo" title="choose a file" placeholder="choose a file">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="<spring:message text="Add new students"/>" class="get-button colorTwo center"/>
+                </td>
+            </tr>
+        </table>
     </form:form>
 </div>
 
-<div>
+<div class="inlineButtons">
+    <form:form method="get" action="/admin/createTeacher">
+        <input type="submit" value="Create Teacher" class="get-button colorThree"/>
+    </form:form>
+</div>
+
+<div class="inlineButtons">
+    <form:form method="get" action="/admin/courseAdministration">
+        <input type="submit" value="Course administration" class="get-button colorThree"/>
+    </form:form>
+</div>
+
+<div class="inlineButtons">
     <form:form method="get" action="/admin/studentGroupAdministration">
-        <input type="submit" value="Student group administration"/>
+        <input type="submit" value="Student group administration" class="get-button colorThree"/>
     </form:form>
 </div>
 
@@ -31,7 +52,7 @@
 <h2>Students: </h2>
 <table border="2">
     <tr class="table-header">
-        <td>id</td>
+        <td class="id">id</td>
         <td>login</td>
         <td>Active</td>
         <td>Action</td>
@@ -54,15 +75,24 @@
             <td>
                 <c:choose>
                     <c:when test="${student.active}">
-                        <a href="<c:url value="/admin/${student.id}/deactivate" />">Deactivate</a>
+                        <input type="button" value="Deactivate"
+                               onclick="location.href='<c:url value="/admin/${student.id}/deactivate" />'"
+                               class="get-button colorTwo">
+<%--                        <a href="<c:url value="/admin/${student.id}/deactivate" />">Deactivate</a>--%>
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value="/admin/${student.id}/activate" />">Activate</a>
+                        <input type="button" value="Activate"
+                               onclick="location.href='<c:url value="/admin/${student.id}/activate" />'"
+                               class="get-button colorTwo">
+<%--                        <a href="<c:url value="/admin/${student.id}/activate" />">Activate</a>--%>
                     </c:otherwise>
                 </c:choose>
             </td>
             <td>
-                <a href="<c:url value='/admin/editStudent/${student.id}'/>">Edit</a>
+                <input type="button" value="Edit"
+                       onclick="location.href='<c:url value="/admin/editStudent/${student.id}" />'"
+                       class="get-button colorTwo">
+<%--                <a href="<c:url value='/admin/editStudent/${student.id}'/>">Edit</a>--%>
             </td>
         </tr>
     </c:forEach>
@@ -80,7 +110,10 @@
             <td>${teacher.id}</td>
             <td>${teacher.login}</td>
             <td>
-                <a href="<c:url value='/admin/editTeacher/${teacher.id}'/>">Edit</a>
+                <input type="button" value="Edit"
+                       onclick="location.href='<c:url value="/admin/editTeacher/${teacher.id}" />'"
+                       class="get-button colorTwo">
+
             </td>
         </tr>
     </c:forEach>
@@ -99,6 +132,3 @@
         </tr>
     </c:forEach>
 </table>
-
-</body>
-</html>

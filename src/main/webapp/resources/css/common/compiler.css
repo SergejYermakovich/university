@@ -1,6 +1,6 @@
 body
 {
-    background: url("/resources/pictures/background/books.jpg");
+    background: url("/resources/pictures/background/books.jpg") fixed;
 }
 
 .go-back-compiler {

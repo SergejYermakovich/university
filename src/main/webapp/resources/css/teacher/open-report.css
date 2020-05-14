@@ -13,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     color: #ddd;
-    background: url("/resources/pictures/background/books.jpg") no-repeat;
+    background: url("/resources/pictures/background/books.jpg") no-repeat fixed;
 }
 
 #textarea {

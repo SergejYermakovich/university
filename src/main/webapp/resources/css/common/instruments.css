@@ -5,7 +5,7 @@ body {
     font-size: 12px;
     line-height: 1.6em;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    background: url("/resources/pictures/background/books.jpg");
+    background: url("/resources/pictures/background/books.jpg") fixed;
 }
 
 .link {

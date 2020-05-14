@@ -5,9 +5,17 @@ tr {
     font-size: 30px;
 }
 
+.table-header {
+    background: rgba(0, 100, 90, .6);
+}
+
 td {
     padding: 15px;
-    width: 40%;
+    width: 20%;
+}
+
+.id {
+    width: 5%;
 }
 
 .go-back {
@@ -30,6 +38,12 @@ body {
 }
 
 table {
+    margin-left: 20px;
+}
+
+h2 {
+    text-transform: uppercase;
+    color: #e6e6e6;
     margin-left: 20px;
 }
 
@@ -58,5 +72,30 @@ h1 {
 }
 
 .colorTwo {
-    background: #0fc3f5;
+    background: #9DB82E;
+}
+
+.colorThree {
+    background: #9DB82E;
+}
+table {
+    margin-top: 10px;
+}
+
+.input-description {
+    margin-left: 50px;
+    width: 40%;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid #fff;
+}
+
+.inlineButtons {
+    display: inline-block;
+}
+
+.center {
+    text-align: center;
+    position: center;
 }
